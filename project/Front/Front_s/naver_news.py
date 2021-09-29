@@ -26,7 +26,6 @@ def get_now():
         url_fin.append(link['href'])
 
     table = pd.DataFrame({'title':title_fin, 'press':press_fin, 'url':url_fin})
-    # table.to_csv('news.csv', encoding='utf-8-sig')
     print(table)
 
 # 5분마다 업데이트
