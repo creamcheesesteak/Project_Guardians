@@ -309,8 +309,8 @@
                                                                 <line data-v-24304d4f="" id="ver-bar-50" x1="123.75" y1="19.5" x2="123.75" y2="10.5" fill="none" stroke="#E1E1E1" stroke-linecap="round" stroke-width="4.36"></line>
                                                                 <line data-v-24304d4f="" id="ver-bar-25" x1="69.13" y1="19.5" x2="69.13" y2="10.5" fill="none" stroke="#E1E1E1" stroke-linecap="round" stroke-width="2.18"></line>
                                                                 <line data-v-24304d4f="" id="ver-bar-75" x1="178.38" y1="19.5" x2="178.38" y2="10.5" fill="none" stroke="#E1E1E1" stroke-linecap="round" stroke-width="2.18"></line>
-                                                                <circle data-v-24304d4f="" id="this-company-water" cx={{co2_loc_mean}} cy="15" r="7.5" fill="#fff" stroke="#87A83F" stroke-width="3"></circle><!--얘네 cx값이 그래프 위치를 변하게 하는것(평균)-->
-                                                                <circle data-v-24304d4f="" id="sector-avg" cx={{co2_loc}}  cy="15" r="4.5" fill="#fff" stroke="#666" stroke-width="3"></circle><!--얘네 cx값이 그래프 위치를 변하게 하는것(해당 기업)-->
+                                                                <circle data-v-24304d4f="" id="this-company-water" cx={{co2_loc_mean|safe}} cy="15" r="7.5" fill="#fff" stroke="#87A83F" stroke-width="3"></circle><!--얘네 cx값이 그래프 위치를 변하게 하는것(평균)-->
+                                                                <circle data-v-24304d4f="" id="sector-avg" cx={{co2_loc|safe}}  cy="15" r="4.5" fill="#fff" stroke="#666" stroke-width="3"></circle><!--얘네 cx값이 그래프 위치를 변하게 하는것(해당 기업)-->
                                                             </svg>
                                                             <p data-v-24304d4f="" class="line_chart_dot" style="margin: 0px;">
                                                                 <span data-v-24304d4f="" class="avg"></span>
@@ -387,8 +387,8 @@
                                                                     <line data-v-24304d4f="" id="ver-bar-50" x1="123.75" y1="19.5" x2="123.75" y2="10.5" fill="none" stroke="#E1E1E1" stroke-linecap="round" stroke-width="4.36"></line>
                                                                     <line data-v-24304d4f="" id="ver-bar-25" x1="69.13" y1="19.5" x2="69.13" y2="10.5" fill="none" stroke="#E1E1E1" stroke-linecap="round" stroke-width="2.18"></line>
                                                                     <line data-v-24304d4f="" id="ver-bar-75" x1="178.38" y1="19.5" x2="178.38" y2="10.5" fill="none" stroke="#E1E1E1" stroke-linecap="round" stroke-width="2.18"></line>
-                                                                    <circle data-v-24304d4f="" id="this-company-water" cx={{eng_loc_mean}} cy="15" r="7.5" fill="#fff" stroke="#87A83F" stroke-width="3"></circle>
-                                                                    <circle data-v-24304d4f="" id="sector-avg" cx={{eng_loc}} cy="15" r="4.5" fill="#fff" stroke="#666" stroke-width="3"></circle>
+                                                                    <circle data-v-24304d4f="" id="this-company-water" cx={{eng_loc_mean|safe}} cy="15" r="7.5" fill="#fff" stroke="#87A83F" stroke-width="3"></circle>
+                                                                    <circle data-v-24304d4f="" id="sector-avg" cx={{eng_loc|safe}} cy="15" r="4.5" fill="#fff" stroke="#666" stroke-width="3"></circle>
                                                                 </svg>
                                                                 <p data-v-24304d4f="" class="line_chart_dot" style="margin: 0px;">
                                                                     <span data-v-24304d4f="" class="avg">
