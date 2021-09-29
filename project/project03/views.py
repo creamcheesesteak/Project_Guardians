@@ -1,8 +1,11 @@
+import tips as tips
 from django.shortcuts import render
 import pandas as pd
 import numpy as np
 import sqlite3
 # Create your views here.
+# from project03.myanalysis.Myanalysis import Co2
+
 
 def index(request):
 
@@ -77,3 +80,4 @@ def test(request):
 		'mean':mean
 	}
 	return render(request, 'test.html', context)
+
