@@ -28,6 +28,7 @@ path('', views.index, name='index'),
 path('index', views.index, name='index'),
 
 path('blog', views.blog, name='blog'),
+path('blog1', views.blog1, name='blog1'),
 path('elements', views.elements, name='elements'),
 path('blog_details', views.blog_details, name='blog_details'),
 
