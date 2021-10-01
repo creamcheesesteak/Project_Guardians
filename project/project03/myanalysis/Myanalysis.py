@@ -1,14 +1,14 @@
 import pandas as pd
 import sqlite3
-from project.config.settings import DATA_DIRS
+
 
 
 class Co2:
     # c1 -> 개선 활동
     def c1(self,ind):
-        connect = sqlite3.connect(DATA_DIRS[0]+'\\sorting.db')
+        con = sqlite3.connect('./sorting.db')
 
-        df = pd.read_sql_query('select * from sorting',connect)
+        df = pd.read_sql_query('select * from sorting',con)
         df2 = df[['industry','act','money','deco2']]
         df3 = df2[df2['industry'] == ind]
 
@@ -17,8 +17,8 @@ class Co2:
 
     # c2 -> 산업명
     def c2(self,ind):
-        connect = sqlite3.connect(DATA_DIRS[0]+'\\sorting.db')
-        df = pd.read_sql_query('select * from sorting',connect)
+        con = sqlite3.connect('./sorting.db')
+        df = pd.read_sql_query('select * from sorting',con)
         df2 = df[['sort','industry']]
         df3 = df2[df2['industry'] == ind]
 
@@ -27,8 +27,8 @@ class Co2:
 
     # c3 -> 절감액
     def c3(self,ind):
-        connect = sqlite3.connect(DATA_DIRS[0]+'\\sorting.db')
-        df = pd.read_sql_query('select * from sorting',connect)
+        con = sqlite3.connect('./sorting.db')
+        df = pd.read_sql_query('select * from sorting',con)
         df2 = df[['industry','money']]
         df3 = df2[df2['industry'] == ind]
 
@@ -37,8 +37,8 @@ class Co2:
 
     # c4 -> 감축량
     def c4(self,ind):
-        connect = sqlite3.connect(DATA_DIRS[0]+'\\sorting.db')
-        df = pd.read_sql_query('select * from sorting',connect)
+        con = sqlite3.connect('./sorting.db')
+        df = pd.read_sql_query('select * from sorting',con)
         df2 = df[['industry','deco2']]
         df3 = df2[df2['industry'] == ind]
 
@@ -48,8 +48,8 @@ class Co2:
     # graph -> 그래프용 데이터 추출
     def graph(self,ind,sido):
         #df = pd.read_excel('../../data/calc2_result_graph.xlsx',engine='openpyxl', index_col=0);
-        connect = sqlite3.connect(DATA_DIRS[0]+'\\sorting.db')
-        df = pd.read_sql_query('select * from calc2_result_graph',connect)
+        con = sqlite3.connect('./sorting.db')
+        df = pd.read_sql_query('select * from calc2_result_graph',con)
         df = df.set_index('time')
 
         graph_col = ind + sido
