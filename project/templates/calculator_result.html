@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+	<!-- Load plotly.js into the DOM : 1.basic_bar 2.timeseires 3.line-->
+	<script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+
 </head>
 <body>
 	<!--? Preloader Start -->
@@ -111,42 +115,153 @@
 		</div>
 		<!-- Hero End -->
 <!--ATTACH START-->
-		<div class="container box_1170">
-		<html lang="ko">
-		  <head>
-		  <meta charset="utf-8">
-			<title>solution</title>
-			<style>
-			  {
-				font-size: 16px;
-				font-family: Consolas, sans-serif;
-				display:block
-			  }
-			</style>
-		  </head>
-		  <body>
-			<form method="get" action="form-action.html">
-				감축값 <input type="text" id="co2" name ="test1" value="{{co2}}"><br>
-				절감액 <input type="text" id="money" name ="test2" value="{{money}}"><br>
-				사용자 입력 전기 <input type="text" id="user_elec" name ="test3" value="{{user_elec}}"><br>
-				사용자 입력 탄소 <input type="text" id="user_co2" name ="test4" value="{{user_co2}}"><br>
-				사용자 입력 나무 <input type="text" id="user_tree" name ="test5" value="{{user_tree}}"><br>
-				지역 <input type="text" id="result_sido" name ="test6" value="{{result_sido}}"><br>
-				산업 <input type="text" id="ind" name ="test7" value="{{ind}}"><br>
+		<h1>산업 : {{ind}}, 시도 : {{sido}}, 전력량 : {{elec}}, 소모나무 : {{tree}}, 이산화탄소배출량 : {{co2}}</h1>
+		<h1>감축이산화탄소 : {{reduce_co2}}, 절감금액 : {{reduce_money}}, 산업한글명 : {{ind_ko}}</h1>
+		<h1>기술 : {{data}}</h1>
 
-			</form>
-		  </body>
-		</html>
-		<!--    <input type="radio" name="chk_info1" value='primary'>농업,임업 및 어업-->
-		<!--    <input type="radio" name="chk_info2" value='mining'>광업-->
-		<!--    <input type="radio" name="chk_info3" value='manufacture'>제조업-->
-		<!--    <input type="radio" name="chk_info4" value='energy'>전기,가스,증기 및 수도사업-->
-		<!--    <input type="radio" name="chk_info5" value='recycle'>폐기물 및 재생사업-->
-		<!--    <input type="radio" name="chk_info6" value='building'>건설업-->
-		<!--    <input type="radio" name="chk_info8" value='retail'>도매및 소매업-->
-		<!--    <input type="radio" name="chk_info9" value='transportation'>운수업-->
 
-		</div>
+		<h1>{{ind}}{{sido}}의 평균 이산화탄소배출량과 예측치 시각화</h1>
+		<!-- time series visualization -->
+		<div id='timeseries' style="width:60%;max-width:550px"></div>
+			<script>
+				var raw = {
+				  x: {{ date | safe}},
+				  y: {{ raw | safe}},
+				  type: 'scatter',
+				  name: 'past',
+				  mode: 'line',
+				  line: {color: '#89CFEF'}
+				};
+
+				var upper = {
+				  x: {{ date | safe}},
+				  y: {{ upper | safe}},
+				  fill: 'tonexty',
+				  fillcolor: 'white',
+				  type: 'scatter',
+				  name: 'criteria',
+				  mode: 'none'
+				};
+
+				var lower = {
+				  x: {{ date | safe}},
+				  y: {{ lower | safe}},
+				  fill: 'tonexty',
+				  fillcolor: '#98FB98',
+				  color: 'white',
+				  type: 'scatter',
+				  name: 'predict_field',
+				  mode: 'none'
+				};
+
+				var mean = {
+				  x: {{ date | safe}},
+				  y: {{ mean | safe}},
+				  type: 'scatter',
+				  name: 'prediction',
+				  mode: 'line',
+				  line: {color: '##D30000'}
+				};
+				var layout = {
+				  title: 'CO2 Emissions',
+				  shapes: [
+				{
+					type: 'rect',
+					// x-reference is assigned to the x-values
+					xref: 'x',
+					// y-reference is assigned to the plot paper [0,1]
+					yref: 'paper',
+					x0: '2018-11-01',
+					y0: 0,
+					x1: '2022-10-01',
+					y1: 1,
+					fillcolor: '#999DA0',
+					opacity: 0.2,
+					line: {
+						width: 0
+					}
+				}],
+				  xaxis: {
+					autorange: true,
+					range: {{ date | safe}},
+					rangeselector: {buttons: [
+						{
+						  count: 1,
+						  label: '1m',
+						  step: 'month',
+						  stepmode: 'backward'
+						},
+						{
+						  count: 6,
+						  label: '6m',
+						  step: 'month',
+						  stepmode: 'backward'
+						},
+						{step: 'all'}
+					  ]},
+					rangeslider: {range: {{ date | safe}}},
+					type: 'date'
+				  },
+				  yaxis: {
+					autorange: true,
+					type: 'linear'
+				  }
+				};
+				// var layout = {
+				//   title: 'CO2 Emissions'
+
+				// };
+				var data = [raw, upper, lower, mean];
+
+				Plotly.newPlot('timeseries', data, layout);
+			</script>
+
+		<h1>이산화탄소 배출현황 및 비교</h1>
+		<!-- basic bac chart visualization -->
+		<div id='basic_bar' style="width:60%;max-width:550px"><!-- Plotly chart will be drawn inside this DIV --></div>
+			<script>
+				var data = [
+				  {
+					x: ['경쟁사', '귀사', '기술적용', '정부목표'],
+					y: {{ bar_value | safe}},
+					marker:{
+						color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
+					  },
+					type: 'bar'
+				  }
+				];
+
+				Plotly.newPlot('basic_bar', data);
+			</script>
+		<p>귀사의 연간 이산화탄소 배출량은 총 <span class="my_co2" style="color: #FF2800">{{co2}}</span>이며, <span class="my_ind" style="color: #999DA0">{{ind}}</span>-<span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약<span class="my_ratio" style="color: #FF2800">{{ratio}}% {{compare}} 배출</span>하고 있습니다.</p>
+		<p>이만큼의 이산화탄소를 없애기 위해서는 약<span class="my_tree" style="color: #FF2800">{{tree}}</span>그루의 소나무를 심어야합니다.</p>
+		<p>정부는 탄소중립을 위해서 2030년까지 2017년기준 24.4%를 감축하기로 선언했습니다. 귀사는 정부시책에 따라 2030년까지 <span class="my_target" style="color: #FF2800">{{c_target}}</span>의 배출량 감축을 수행해야합니다.</p>
+
+		<h1>예측치와 감축적용시 비교</h1>
+			<div id='compare_result' style="width:60%;max-width:550px"></div>
+			<script>
+				var data_defore = {
+				  x: {{ date | safe}},
+				  y: {{ my_before | safe}},
+				  type: 'line',
+				  line: {color: '#D6CFC7'},
+				  name: '과거+예측치'
+				};
+
+				var data_after = {
+				  x: {{ date | safe}},
+				  y: {{ my_after | safe}},
+				  type: 'line',
+				  line: {color: '#B40A30'},
+				  fill: 'tonexty',
+				  fillcolor: '#B40A30',
+				  name: '기술적용시 감축량'
+				};
+
+				var data = [data_defore, data_after];
+
+				Plotly.newPlot('compare_result', data);
+			</script>
 
 <!--ATTACH END-->
 								<!-- Blog Area End -->
