@@ -207,6 +207,9 @@ def calculator_option(request):
 			'sol9': data[8],
 			'sol10': data[9],
 			'sort' : data_sorting[0],
+
+			'ind': ind,
+
 			'money1': money[0],
 			'money2': money[1],
 			'money3': money[2],
@@ -243,22 +246,74 @@ def calculator_option(request):
 	return render(request, 'calculator_option.html', context)
 
 def calculator_result(request):
-	co2 = request.GET.get('co2')
-	money = request.GET.get('money')
-	user_elec = request.GET.get('user_elec');
-	user_co2 = request.GET.get('user_co2');
-	user_tree = request.GET.get('user_tree');
-	result_sido = request.GET.get('user_sido');
-	ind = request.GET.get('ind_name');
+	ind = request.GET.get('ind');
+	sido = request.GET.get('user_sido');
+	elec = request.GET.get('user_elec');
+	co2 = round(float(request.GET.get('user_co2')), 3)
+	tree = request.GET.get('user_tree');
+
+	ind_ko = request.GET.get('ind_name');
+	reduce_co2 = round(float(request.GET.get('co2')), 3)
+	reduce_money = request.GET.get('money');
+
+	# def
+	in_pl = ind + sido
+	db_test = sqlite3.connect('./timeseries.db')
+	c = db_test.cursor()
+	df = pd.read_sql("SELECT * FROM " + in_pl + "", db_test, index_col=None)
+	df = df.replace(np.nan, 'null')
+	date = df.date.tolist()
+	raw = df.raw.values.tolist()
+	lower = df.lower.values.tolist()
+	upper = df.upper.values.tolist()
+	mean = df['mean'].values.tolist()
+
+	c_competitor = sum(map(float, list(filter(lambda a: a != 'null', df.raw.tolist()))[-12:]))
+	c_reduce = (co2 - reduce_co2)
+	start = df.loc[df.date == '2017-01-01 00:00:00'].index
+	stand = sum(map(float, df.loc[start[0]:start[0] + 11].raw.tolist()))
+	c_target = round((stand * (co2 / stand)) * 0.756, 3)
+	bar_value = [c_competitor, co2, c_reduce, c_target]
+
+	criteria = (co2 / c_competitor)
+	if criteria >= 1:
+		ratio = round((co2 / c_competitor) * 100, 3)
+		compare = '더 많이'
+	else:
+		ratio = abs(round((1 - float(co2) / c_competitor) * 100, 3))
+		compare = '더 조금'
+
+	value_target = list(map(float, df.target.tolist()))
+	my_before = [element * (ratio / 100) for element in value_target]
+
+	my_after = [element * 0.87 for element in my_before]  # example
 
 	context = {
-		'co2': co2,
-		'money': money,
-		'user_elec': user_elec,
-		'user_co2': user_co2,
-		'user_tree': user_tree,
-		'result_sido': result_sido,
 		'ind': ind,
+		'sido': sido,
+		'elec': elec,
+		'tree': tree,
+		'co2': co2,
+
+		'ind_ko': ind_ko,
+		'reduce_co2': reduce_co2,
+		'reduce_money': reduce_money,
+
+		'bar_value': bar_value,
+
+		'ratio': ratio,
+		'compare': compare,
+		'c_target': c_target,
+
+		'target': in_pl,
+		'date': date,
+		'raw': raw,
+		'lower': lower,
+		'upper': upper,
+		'mean': mean,
+
+		'my_before': my_before,
+		'my_after': my_after,
 	}
 
 	return render(request, 'calculator_result.html', context)
