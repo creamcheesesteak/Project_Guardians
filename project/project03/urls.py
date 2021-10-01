@@ -29,8 +29,12 @@ path('index', views.index, name='index'),
 
 path('blog', views.blog, name='blog'),
 path('blog1', views.blog1, name='blog1'),
-path('elements', views.elements, name='elements'),
 path('blog_details', views.blog_details, name='blog_details'),
+path('calculator', views.calculator, name='calculator'),
+path('calculator_option', views.calculator_option, name='calculator_option'),
+path('calculator_result', views.calculator_result, name='calculator_result'),
+
+path('elements', views.elements, name='elements'),
 
 path('test', views.test, name='test'),
 ]
