@@ -266,16 +266,16 @@
 			  <br>
 			  <p>{{sort}}에 관한 감축방안</p>
 				<div class = sorting_act>
-			  <p><input type="checkbox" id ="sol1" value={{deco1}} onclick="getCheckboxValue(event)"> {{sol1}}</p>
-			  <p><input type="checkbox" id ="sol2" value={{deco2}} onclick="getCheckboxValue(event)"> {{sol2}}</p>
-			  <p><input type="checkbox" id ="sol3" value={{deco3}} onclick="getCheckboxValue(event)"> {{sol3}}</p>
-			  <p><input type="checkbox" id ="sol4" value={{deco4}} onclick="getCheckboxValue(event)"> {{sol4}}</p>
-			  <p><input type="checkbox" id ="sol5" value={{deco5}} onclick="getCheckboxValue(event)"> {{sol5}}</p>
-			  <p><input type="checkbox" id ="sol6" value={{deco6}} onclick="getCheckboxValue(event)"> {{sol6}}</p>
-			  <p><input type="checkbox" id ="sol7" value={{deco7}} onclick="getCheckboxValue(event)"> {{sol7}}</p>
-			  <p><input type="checkbox" id ="sol8" value={{deco8}} onclick="getCheckboxValue(event)"> {{sol8}}</p>
-			  <p><input type="checkbox" id ="sol9" value={{deco9}} onclick="getCheckboxValue(event)"> {{sol9}}</p>
-			  <p><input type="checkbox" id ="sol10" value={{deco10}} onclick="getCheckboxValue(event)"> {{sol10}}</p>
+		<label class="switch-button"><input type="checkbox" id ="sol1" value={{deco1}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol1}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol2" value={{deco2}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol2}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol3" value={{deco3}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol3}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol4" value={{deco4}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol4}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol5" value={{deco5}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol5}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol6" value={{deco6}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol6}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol7" value={{deco7}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol7}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol8" value={{deco8}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol8}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol9" value={{deco9}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol9}}<br>
+      	<label class="switch-button"><input type="checkbox" id ="sol10" value={{deco10}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol10}}<br>
 				</div>
 
 				<td><input type='number' name='co2' id='co2' readonly> tCO₂/yr</td>
@@ -310,7 +310,7 @@
 				<!-- highcharts close  -->
 
 
-				<!-- test1234로 보내기  -->
+				<!-- calculator_result로 보내기  -->
 				<td> </td><td colspan="3"><div class="button-group-area">
 							<input type="submit" value="확인" class="btn btn-block" onclick="location='/calculator_result'">
 						</div></td>
@@ -332,14 +332,6 @@
 			</form>
 		  </body>
 		</html>
-		<!--    <input type="radio" name="chk_info1" value='primary'>농업,임업 및 어업-->
-		<!--    <input type="radio" name="chk_info2" value='mining'>광업-->
-		<!--    <input type="radio" name="chk_info3" value='manufacture'>제조업-->
-		<!--    <input type="radio" name="chk_info4" value='energy'>전기,가스,증기 및 수도사업-->
-		<!--    <input type="radio" name="chk_info5" value='recycle'>폐기물 및 재생사업-->
-		<!--    <input type="radio" name="chk_info6" value='building'>건설업-->
-		<!--    <input type="radio" name="chk_info8" value='retail'>도매및 소매업-->
-		<!--    <input type="radio" name="chk_info9" value='transportation'>운수업-->
 
 
 		</div>
@@ -402,6 +394,94 @@
 								<!-- Jquery Plugins, main Jquery -->
 								<script src="{% static 'assets/js/plugins.js' %}"></script>
 								<script src="{% static 'assets/js/main.js' %}"></script>
+
+								<!-- highcharts script -->
+								<script>
+									var chart = Highcharts.chart('container', {
+
+									chart: {
+										type: 'column'
+									},
+
+									title: {
+										text: '   '
+									},
+
+								/*     subtitle: {
+										text: 'Resize the frame or click buttons to change appearance'
+									}, */
+
+									legend: {
+										align: 'right',
+										verticalAlign: 'middle',
+										layout: 'vertical'
+									},
+
+									xAxis: {
+										categories: ['탄소발생량', '필요 소나무'],
+										labels: {
+											x: -10
+										}
+									},
+
+									yAxis: {
+										allowDecimals: false,
+										title: {
+											text: 'Amount'
+										}
+									},
+
+									series: [{
+										name: '{{result_sido}} {{sort}}의 평균값',
+										data: [Math.round({{ind_co2}}*100)/100, Math.round({{ind_tree}}*100)/100], color: "#dedede"
+									}, {
+										name: '사용자 입력값',
+										data: [Math.round({{user_co2}}*100)/100, Math.round({{user_tree}}*100)/100], color: "#000080"
+									}],
+									plotOptions: {
+									column: {
+										dataLabels: {
+											enabled: true,
+											crop: false,
+											overflow: 'none'
+										}
+									}
+								},
+
+									responsive: {
+										rules: [{
+											condition: {
+												maxWidth: 500
+											},
+											chartOptions: {
+												legend: {
+													align: 'center',
+													verticalAlign: 'bottom',
+													layout: 'horizontal'
+												},
+												yAxis: {
+													labels: {
+														align: 'left',
+														x: 0,
+														y: -5
+													},
+													title: {
+														text: null
+													}
+												},
+												subtitle: {
+													text: null
+												},
+												credits: {
+													enabled: false
+												}
+											}
+										}]
+									}
+								});
+
+
+								</script>
 
 							</body>
 							</html>
