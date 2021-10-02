@@ -155,23 +155,22 @@ def blog_details(request):
 		co2_mean = sort['GHG_EMS'].mean()
 		co2_min = sort['GHG_EMS'].min()
 		co2_max = sort['GHG_EMS'].max()
-		co2_all = (sort['GHG_EMS'].mean()) * (len(sort['GHG_EMS']))
+		# co2_all = (sort['GHG_EMS'].mean()) * (len(sort['GHG_EMS']))
 		eng = sort.ENG_CNSM[sort['CORP_NM'] == search].mean()
 		eng_mean = sort['ENG_CNSM'].mean()
 		eng_min = sort['ENG_CNSM'].min()
 		eng_max = sort['ENG_CNSM'].max()
-		eng_all = (sort['ENG_CNSM'].mean()) * (len(sort['ENG_CNSM']))
+		# eng_all = (sort['ENG_CNSM'].mean()) * (len(sort['ENG_CNSM']))
 
-		co2_loc_mean = (co2_mean / co2_all) * 2330
-		co2_loc = (co2 / co2_all) * 2330
-		eng_loc_mean = (eng_mean / co2_all) * 2330
-		eng_loc = (eng / co2_all) * 2330
+		co2_loc_mean = (co2_mean / co2_max) * 233
+		co2_loc = (co2 / co2_max) * 233
+		eng_loc_mean = (eng_mean / eng_max) * 233
+		eng_loc = (eng / eng_max) * 233
 
 		result = {'category': category, 'search': search, 'co2': co2, 'co2_mean': co2_mean, 'co2_min': co2_min,
-				  'co2_all': co2_all,
 				  'co2_max': co2_max, 'eng': eng, 'eng_mean': eng_mean, 'eng_min': eng_min, 'eng_max': eng_max,
-				  'eng_all': eng_all,
 				  'co2_loc_mean': co2_loc_mean, 'co2_loc': co2_loc, 'eng_loc_mean': eng_loc_mean, 'eng_loc': eng_loc}
+
 
 	return render(request, 'blog_details.html',context=result)
 
@@ -239,9 +238,9 @@ def calculator_option(request):
 			'ind_tree' : ind_mean[2],
 		};
 	except IndexError:
-		return render(request, 'calc2.html')
+		return render(request, 'elements.html')
 	except AttributeError:
-		return render(request, 'calc2.html')
+		return render(request, 'elements.html')
 
 	return render(request, 'calculator_option.html', context)
 

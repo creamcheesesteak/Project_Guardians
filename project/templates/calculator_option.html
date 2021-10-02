@@ -259,12 +259,17 @@
 				font-family: Consolas, sans-serif;
 				display:block
 			  }
+
+			  #sort_name{
+			  	font-size:24px;
+			  	font-weight: bold;
+			  }
 			</style>
 		  </head>
 		  <body>
 			<form method="get" action="form-action.html">
 			  <br>
-			  <p>{{sort}}에 관한 감축방안</p>
+			  <p id="sort_name">{{sort}}에 관한 감축방안</p>
 				<div class = sorting_act>
 		<label class="switch-button"><input type="checkbox" id ="sol1" value={{deco1}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol1}}<br>
       	<label class="switch-button"><input type="checkbox" id ="sol2" value={{deco2}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol2}}<br>
@@ -296,7 +301,7 @@
 
 		<!--        <div id='result'></div>-->
 		<!--      <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>-->
-				<br><br><br><br><br><br><br><br>
+
 
 				<!-- highcharts 표시  -->
 				<script src="https://code.highcharts.com/highcharts.js"></script>
