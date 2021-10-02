@@ -238,9 +238,9 @@ def calculator_option(request):
 			'ind_tree' : ind_mean[2],
 		};
 	except IndexError:
-		return render(request, 'calc2.html')
+		return render(request, 'elements.html')
 	except AttributeError:
-		return render(request, 'calc2.html')
+		return render(request, 'elements.html')
 
 	return render(request, 'calculator_option.html', context)
 
