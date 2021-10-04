@@ -21,6 +21,19 @@
     <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<style>
+		#content {
+		min-height:900px;
+		background:url('./static/assets/img/back1.png') no-repeat;
+		background-position: center;
+		}
+		form.pageDiv {
+		position:absolute;
+		top:800px;
+		left:400px;
+		}
+
+	</style>
 </head>
 <body>
 	<!--? Preloader Start -->
@@ -127,7 +140,8 @@
 			 }
 			}
 			</script>
-			<div class="container box_1170">
+
+			<div class="container box_1170" id="content">
 			<html>
 			<head>
 			<meta charset="EUC-KR">
@@ -143,7 +157,7 @@
 				text-align: right;
 			  }
 			</style>
-			<form name="search" action="/calculator_option" method="GET">
+			<form name="search" action="/calculator_option" method="GET" class="pageDiv">
 				<table border="1">
 				<th>머신러닝 탄소 분석</th>
 				<tr><!-- 첫번째 줄 시작 -->
@@ -206,12 +220,8 @@
 
 
 			</body>
-			</html></div>
-			<img src="./static/assets/img/back1.png">
-			<img src="./static/assets/img/back2.png">
-
-
-
+			</html>
+			</div>
 		</div>
 	<!-- End Align Area -->
 	</main>
