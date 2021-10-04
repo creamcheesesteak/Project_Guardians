@@ -139,6 +139,19 @@
 			  document.getElementById('co2').value = (Math.round((parseInt(document.getElementById('elec').value)  * 0.4663) / 0.1)) * 0.1;
 			 }
 			}
+
+			function alert_add()
+			{
+				if(document.getElementById('co2').value < 15)
+				{
+					alert("값 미입력 또는 전기사용량 32이하의 값 입력");
+				}
+				else
+				{
+					location.href = '/calculator_option'
+				}
+
+			 }
 			</script>
 
 			<div class="container box_1170" id="content">
@@ -212,7 +225,7 @@
 					</tr><!-- 두번째 줄 끝 -->
 					<tr><!-- 두번째 줄 시작 -->
 					<td> </td><td colspan="3"><div class="button-group-area">
-								<input type="submit" value="확인" class="btn btn-block" onclick="location='/calculator_option'">
+								<input type="submit" value="확인" class="btn btn-block" onclick="alert_add()">
 							</div></td>
 				</tr><!-- 두번째 줄 끝 -->
 				</table>
