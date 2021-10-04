@@ -22,7 +22,42 @@
     <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/highcharts.css' %}">
-
+	<style>
+		#content {
+		min-height:900px;
+		background:url('./static/assets/img/back1.png') no-repeat;
+		background-position: center;
+		}
+		div.left {
+			width: 50%;
+			float: left;
+			box-sizing: border-box;
+			padding-top:250px;
+			padding-left:100px;
+		  }
+		div.right {
+			width: 50%;
+			float: right;
+			box-sizing: border-box;
+			padding-top:250px;
+			padding-right:100px;
+		  }
+		form.pageDiv {
+		position:absolute;
+		top:800px;
+		left:400px;
+		}
+		.switch-button{
+		width:55px;
+		height:25px;
+		}
+		div.go{
+		text-align:center;
+		}
+		.btn-size{
+		width:82%;
+		}
+	</style>
 </head>
 <body>
 <form name="search" action="/calculator_result" method="GET">
@@ -248,45 +283,47 @@
 		</script>
 
 
-		<div class="container box_1170">
+		<div class="container box_1170" id="content">
 		<html lang="ko">
 		  <head>
 		  <meta charset="utf-8">
 			<title>solution</title>
 			<style>
 			  {
-				font-size: 16px;
+				font-size: 15px;
 				font-family: Consolas, sans-serif;
 				display:block
 			  }
 
 			  #sort_name{
-			  	font-size:24px;
+			  	font-size:22px;
 			  	font-weight: bold;
 			  }
 			</style>
 		  </head>
 		  <body>
-			<form method="get" action="form-action.html">
-			  <br>
-			  <p id="sort_name">{{sort}}에 관한 감축방안</p>
-				<div class = sorting_act>
-		<label class="switch-button"><input type="checkbox" id ="sol1" value={{deco1}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol1}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol2" value={{deco2}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol2}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol3" value={{deco3}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol3}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol4" value={{deco4}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol4}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol5" value={{deco5}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol5}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol6" value={{deco6}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol6}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol7" value={{deco7}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol7}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol8" value={{deco8}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol8}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol9" value={{deco9}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol9}}<br>
-      	<label class="switch-button"><input type="checkbox" id ="sol10" value={{deco10}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol10}}<br>
-				</div>
+		  <div>
+			  <div class="left">
+				<form method="get" action="form-action.html" class="pageDiv">
+				  <br>
+				  <p id="sort_name">{{sort}}에 관한 감축방안</p>
+					<div class = sorting_act>
+						<label class="switch-button"><input type="checkbox" id ="sol1" value={{deco1}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol1}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol2" value={{deco2}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol2}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol3" value={{deco3}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol3}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol4" value={{deco4}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol4}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol5" value={{deco5}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol5}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol6" value={{deco6}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol6}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol7" value={{deco7}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol7}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol8" value={{deco8}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol8}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol9" value={{deco9}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol9}}<br>
+						<label class="switch-button"><input type="checkbox" id ="sol10" value={{deco10}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol10}}<br>
+					</div>
 
-				<td><input type='number' name='co2' id='co2' readonly> tCO₂/yr</td>
-				<td><input type='number' name='money' id='money' readonly> 백만원/yr</td>
+					<td><input type='number' name='co2' id='co2' style="width:150px" readonly> tCO₂/yr</td>
+					<td><input type='number' name='money' id='money' style="width:150px" readonly> 백만원/yr</td>
 
-					<!-- 데이터 보내기용 hidden  -->
+						<!-- 데이터 보내기용 hidden  -->
 					<input type='hidden' name="user_elec" id="user_elec" value="{{user_elec}}">
 					<input type='hidden' name="user_co2" id="user_co2" value="{{user_co2}}">
 					<input type='hidden' name="user_tree" id="user_tree" value="{{user_tree}}">
@@ -294,16 +331,15 @@
 					<input type="hidden" name="ind_name" id="ind_name" value="{{sort}}">
 
 					<input type="hidden" name="ind" id="ind" value="{{ind}}">
-
-		</form>
-
-
+				</form>
+			  </div>
 
 		<!--        <div id='result'></div>-->
 		<!--      <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>-->
 
 
 				<!-- highcharts 표시  -->
+				<div class="right">
 				<script src="https://code.highcharts.com/highcharts.js"></script>
 				<script src="https://code.highcharts.com/modules/exporting.js"></script>
 				<script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -314,14 +350,14 @@
 					<p class="highcharts-description">
 					</p>
 				</figure>
+				</div>
 				<!-- highcharts close  -->
 
 
 				<!-- calculator_result로 보내기  -->
-				<td> </td><td colspan="3"><div class="button-group-area">
-							<input type="submit" value="확인" class="btn btn-block" onclick="location='/calculator_result'">
-						</div></td>
-
+			  <div class="go">
+					<br><input type="submit" value="확인" class="btn btn-size" onclick="location='/calculator_result'">
+			  </div>
 
 				<!-- hidden input list  -->
 				<input type="hidden" id="money1" value={{money1}}>
@@ -334,161 +370,236 @@
 				<input type="hidden" id="money8" value={{money8}}>
 				<input type="hidden" id="money9" value={{money9}}>
 				<input type="hidden" id="money10" value={{money10}}>
-
-
-			</form>
+		  </div>
 		  </body>
 		</html>
-
-
 		</div>
-				<!-- Blog Area End -->
-			</main>
-			<footer>
-				<div class="footer-wrapper">
-				   <!-- Footer Start-->
-
-				   <!-- footer-bottom area -->
-
-					  <!-- Footer End-->
+	</main>
+	<footer>
+		<div class="footer-wrapper">
+		   <!-- Footer Start-->
+		   <div class="footer-area footer-padding">
+			   <div class="container ">
+				   <div class="row justify-content-between">
+					   <div class="col-xl-4 col-lg-3 col-md-8 col-sm-8">
+						   <div class="single-footer-caption mb-50">
+							   <div class="single-footer-caption mb-30">
+								   <!-- logo -->
+								   <div class="footer-logo mb-35">
+									   <a href="index.html"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>
+								   </div>
+								   <div class="footer-tittle">
+									   <div class="footer-pera">
+										   <p>The automated process starts as soon as your clothes go into the machine.</p>
+									   </div>
+								   </div>
+								   <!-- social -->
+								   <div class="footer-social">
+									   <a href="#"><i class="fab fa-twitter"></i></a>
+									   <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+									   <a href="#"><i class="fab fa-pinterest-p"></i></a>
+								   </div>
+							   </div>
+						   </div>
+					   </div>
+					   <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4">
+						   <div class="single-footer-caption mb-50">
+							   <div class="footer-tittle">
+								   <h4>Reference</h4>
+								   <ul>
+									   <li><a style="font-size:13px;" href="https://www.kiep.go.kr/gallery.es?mid=a10102010000&bid=0002&list_no=9608&act=view">KIEP, '탄소중립 대응 방향'</a></li>
+									   <li><a style="font-size:13px;" href="https://assets.kpmg/content/dam/kpmg/xx/pdf/2020/11/towards-net-zero.pdf">KPMG, 'Towards Net Zero'</a></li>
+									   <li><a style="font-size:13px;" href="https://www.pwc.com/kr/ko/publications/research-insights/samilpwc_the-state-of-climate-tech.pdf">PwC삼일, '기후기술 보고서'</a></li>
+									   <li><a style="font-size:13px;" href="https://www.kosif.org/wp-content/uploads/2021/05/CDP-2020-%EA%B5%AD%EB%AC%B8%EB%B3%B4%EA%B3%A0%EC%84%9C_optimize.pdf">EY한영, 'ESG, 탄소중립'</a></li>
+								   </ul>
+							   </div>
+						   </div>
+					   </div>
+					   <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+						   <div class="single-footer-caption mb-50">
+							   <div class="footer-tittle">
+								   <h4>Our Team</h4>
+								   <ul>
+									   <li><a href="https://github.com/creamcheesesteak">임태혁</a></li>
+									   <li><a href="https://github.com/kaya1436">신채원</a></li>
+									   <li><a href="https://github.com/rcm2000">노청명</a></li>
+									   <li><a href="https://github.com/yoonputer">복정훈</a></li>
+									   <li><a href="https://github.com/SolbiChoi">최솔비</a></li>
+								   </ul>
+							   </div>
+						   </div>
+					   </div>
+					   <div class="col-xl-3 col-lg-4 col-md-6 col-sm-4">
+						   <div class="single-footer-caption mb-50">
+							   <div class="footer-tittle">
+								   <h4>Contact us</h4>
+								   <ul>
+									   <li><a href="https://github.com/creamcheesesteak/Project_Guardians">Project Github</a></li>
+									   <li><a href="#">K-Digital, Final Project 5조</a></li>
+									   <li><a href="#">Privacy Policy</a></li>
+									   <li class="number"><a href="#">Tel</a></li>
+								   </ul>
+							   </div>
+						   </div>
+					   </div>
+				   </div>
+			   </div>
+		   </div>
+		   <!-- footer-bottom area -->
+		   <div class="footer-bottom-area">
+			   <div class="container">
+				   <div class="footer-border">
+					   <div class="row d-flex align-items-center">
+						   <div class="col-xl-12 ">
+							   <div class="footer-copy-right text-center">
+								   <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+									  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+								  </div>
+							  </div>
+						  </div>
+					  </div>
 				  </div>
-			  </footer>
+			  </div>
+			  <!-- Footer End-->
+		  </div>
+	  </footer>
 <!--ATTACH END-->
-								<!-- Scroll Up -->
-								<div id="back-top" >
-									<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-								</div>
-								<!-- JS here -->
+	<!-- Scroll Up -->
+	<div id="back-top" >
+		<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+	</div>
+	<!-- JS here -->
 
 
-								<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
-								<!-- Jquery, Popper, Bootstrap -->
-								<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
-								<script src="{% static 'assets/js/popper.min.js' %}"></script>
-								<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-								<!-- Jquery Mobile Menu -->
-								<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+	<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+	<!-- Jquery, Popper, Bootstrap -->
+	<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+	<!-- Jquery Mobile Menu -->
+	<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
 
-								<!-- Jquery Slick , Owl-Carousel Plugins -->
-								<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-								<script src="{% static 'assets/js/slick.min.js' %}"></script>
-								<!-- One Page, Animated-HeadLin -->
-								<script src="{% static 'assets/js/wow.min.js' %}"></script>
-								<script src="{% static 'assets/js/animated.headline.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+	<!-- Jquery Slick , Owl-Carousel Plugins -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'assets/js/slick.min.js' %}"></script>
+	<!-- One Page, Animated-HeadLin -->
+	<script src="{% static 'assets/js/wow.min.js' %}"></script>
+	<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
 
-								<!-- Date Picker -->
-								<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
-								<!-- Nice-select, sticky -->
-								<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
-								<!-- Progress -->
-								<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
+	<!-- Date Picker -->
+	<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+	<!-- Nice-select, sticky -->
+	<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+	<!-- Progress -->
+	<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
 
-								<!-- counter , waypoint,Hover Direction -->
-								<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
-								<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
-								<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+	<!-- counter , waypoint,Hover Direction -->
+	<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+	<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+	<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
 
-								<!-- contact js -->
-								<script src="{% static 'assets/js/contact.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.form.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
-								<script src="{% static 'assets/js/mail-script.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+	<!-- contact js -->
+	<script src="{% static 'assets/js/contact.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.form.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+	<script src="{% static 'assets/js/mail-script.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
 
-								<!-- Jquery Plugins, main Jquery -->
-								<script src="{% static 'assets/js/plugins.js' %}"></script>
-								<script src="{% static 'assets/js/main.js' %}"></script>
+	<!-- Jquery Plugins, main Jquery -->
+	<script src="{% static 'assets/js/plugins.js' %}"></script>
+	<script src="{% static 'assets/js/main.js' %}"></script>
 
-								<!-- highcharts script -->
-								<script>
-									var chart = Highcharts.chart('container', {
+	<!-- highcharts script -->
+	<script>
+		var chart = Highcharts.chart('container', {
 
-									chart: {
-										type: 'column'
-									},
+		chart: {
+			type: 'column'
+		},
 
-									title: {
-										text: '   '
-									},
+		title: {
+			text: '   '
+		},
 
-								/*     subtitle: {
-										text: 'Resize the frame or click buttons to change appearance'
-									}, */
+	/*     subtitle: {
+			text: 'Resize the frame or click buttons to change appearance'
+		}, */
 
-									legend: {
-										align: 'right',
-										verticalAlign: 'middle',
-										layout: 'vertical'
-									},
+		legend: {
+			align: 'right',
+			verticalAlign: 'middle',
+			layout: 'vertical'
+		},
 
-									xAxis: {
-										categories: ['탄소발생량', '필요 소나무'],
-										labels: {
-											x: -10
-										}
-									},
+		xAxis: {
+			categories: ['탄소발생량', '필요 소나무'],
+			labels: {
+				x: -10
+			}
+		},
 
-									yAxis: {
-										allowDecimals: false,
-										title: {
-											text: 'Amount'
-										}
-									},
+		yAxis: {
+			allowDecimals: false,
+			title: {
+				text: 'Amount'
+			}
+		},
 
-									series: [{
-										name: '{{result_sido}} {{sort}}의 평균값',
-										data: [Math.round({{ind_co2}}*100)/100, Math.round({{ind_tree}}*100)/100], color: "#dedede"
-									}, {
-										name: '사용자 입력값',
-										data: [Math.round({{user_co2}}*100)/100, Math.round({{user_tree}}*100)/100], color: "#000080"
-									}],
-									plotOptions: {
-									column: {
-										dataLabels: {
-											enabled: true,
-											crop: false,
-											overflow: 'none'
-										}
-									}
-								},
+		series: [{
+			name: '{{result_sido}} {{sort}}의 평균값',
+			data: [Math.round({{ind_co2}}*100)/100, Math.round({{ind_tree}}*100)/100], color: "#dedede"
+		}, {
+			name: '사용자 입력값',
+			data: [Math.round({{user_co2}}*100)/100, Math.round({{user_tree}}*100)/100], color: "#000080"
+		}],
+		plotOptions: {
+		column: {
+			dataLabels: {
+				enabled: true,
+				crop: false,
+				overflow: 'none'
+			}
+		}
+	},
 
-									responsive: {
-										rules: [{
-											condition: {
-												maxWidth: 500
-											},
-											chartOptions: {
-												legend: {
-													align: 'center',
-													verticalAlign: 'bottom',
-													layout: 'horizontal'
-												},
-												yAxis: {
-													labels: {
-														align: 'left',
-														x: 0,
-														y: -5
-													},
-													title: {
-														text: null
-													}
-												},
-												subtitle: {
-													text: null
-												},
-												credits: {
-													enabled: false
-												}
-											}
-										}]
-									}
-								});
+		responsive: {
+			rules: [{
+				condition: {
+					maxWidth: 500
+				},
+				chartOptions: {
+					legend: {
+						align: 'center',
+						verticalAlign: 'bottom',
+						layout: 'horizontal'
+					},
+					yAxis: {
+						labels: {
+							align: 'left',
+							x: 0,
+							y: -5
+						},
+						title: {
+							text: null
+						}
+					},
+					subtitle: {
+						text: null
+					},
+					credits: {
+						enabled: false
+					}
+				}
+			}]
+		}
+	});
 
 
-								</script>
-
-							</body>
-							</html>
+	</script>
+</form>
+</body>
+</html>
