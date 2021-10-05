@@ -2,73 +2,79 @@
 <html class="no-js" lang="zxx">
 {% load static %}
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Environmental</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Environmental</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-	<!-- CSS here -->
-	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/hamburgers.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-	<style>
-		#content {
-		min-height:900px;
-		background:url('./static/assets/img/back1.png') no-repeat;
-		background-position: center;
-		}
-		form.pageDiv {
-		position:absolute;
-		top:800px;
-		left:400px;
-		}
+    <style>
+    div#content {background:url('static/assets/img/main_bg.png') no-repeat; height:1100px; background-position:center;}
+    div#content div#content div.section {min-height:900px; }
 
-	</style>
+    div#content div.pageDiv {width:1100px; height:600px; background:white; position:absolute; background-position:center; top:350px; left:200px; border-radius:30px;}
+    div#content div.pageDiv div.inputZone {margin-top:55px; margin-left:60px; font-weight:700px; }
+
+    table {width: 95%;border: 1px solid #444444;border-collapse: collapse;}
+    th, td {border: 1px solid #444444;padding: 10px;}
+    .btn-size {width:95%}
+    </style>
 </head>
+
 <body>
-	<!--? Preloader Start -->
-	<div id="preloader-active">
-		<div class="preloader d-flex align-items-center justify-content-center">
-			<div class="preloader-inner position-relative">
-				<div class="preloader-circle"></div>
-				<div class="preloader-img pere-text">
-					<img src="{% static 'assets/img/logo/loder.png' %}" alt="">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Preloader Start -->
-	<header>
-		<!-- Header Start -->
-		<div class="header-area">
-			<div class="main-header ">
-				<div class="header-bottom  header-sticky">
-					<div class="container-fluid">
-						<div class="row align-items-center">
-							<!-- Logo -->
-							<div class="col-xl-2 col-lg-2">
-								<div class="logo">
-									<a href="index"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
-								</div>
-							</div>
-							<div class="col-xl-10 col-lg-10">
-								<div class="menu-wrapper  d-flex align-items-center justify-content-end">
-									<!-- Main-menu -->
-									<div class="main-menu d-none d-lg-block">
-										<nav>
-											<ul id="navigation">                                                                                          
-												<li><a href="index">Home</a></li>
-												<li><a href="blog">지역별 온실가스</a>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="index"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="">Home</a></li>
+<!--                                                <li><a href="about.html">About</a></li>-->
+<!--                                                <li><a href="what-do.html">What we Do</a></li>-->
+<!--                                                <li><a href="projects.html">Projects</a></li>-->
+                                                <li><a href="blog">지역별 온실가스</a>
                                                     <ul class="submenu">
                                                         <li><a href="blog#map">지역별 온실가스</a></li>
                                                         <li><a href="blog#news">뉴스 분석</a></li>
@@ -79,296 +85,253 @@
                                                         <li><a href="blog_details#map">기업별 온실가스</a></li>
                                                         <li><a href="blog_details#search">기업별 검색</a></li>
                                                     </ul>
-												</li>
-											</ul>
-										</nav>
-									</div>
-									<!-- Header-btn -->
-									<div class="header-right-btn d-none d-lg-block ml-20">
-										<a href="elements" class="btn header-btn">탄소 계산기</a>
-									</div>
-								</div>
-							</div> 
-							<!-- Mobile Menu -->
-							<div class="col-12">
-								<div class="mobile_menu d-block d-lg-none"></div>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!-- Header-btn -->
+                                    <div class="header-right-btn d-none d-lg-block ml-20">
+                                        <a href="elements" class="btn header-btn">탄소 계산기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <div id="content">
+            <div class="section">
+                <div class="pageDiv">
+                    <div class="inputZone">
+                        <form name="search" action="/calculator_option" method="GET">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th bgcolor="#6fd66c">머신러닝 분석</th>
+                                    <th bgcolor="#6fd66c">옵션</th>
+                                    <th bgcolor="#6fd66c">간단한 설명</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td bgcolor="#e9e9e9">지역</td>
+                                    <td>
+                                        <select type="text" class="form-control-sm" name="sido" id="sido">
+                                        <option value='' selected>&emsp;-- 선택 --&emsp;</option>
+                                        <option value='강원도'>강원도&emsp;&emsp;&emsp;</option>
+                                        <option value='경기도'>경기도&emsp;&emsp;&emsp;</option>
+                                        <option value='경상남도'>경상남도&emsp;&emsp;</option>
+                                        <option value='경상북도'>경상북도&emsp;&emsp;</option>
+                                        <option value='광주광역시'>광주광역시&emsp;</option>
+                                        <option value='대구광역시'>대구광역시&emsp;</option>
+                                        <option value='대전광역시'>대전광역시&emsp;</option>
+                                        <option value='부산광역시'>부산광역시&emsp;</option>
+                                        <option value='서울특별시'>서울특별시&emsp;</option>
+                                        <option value='세종특별자치시'>세종특별자치시</option>
+                                        <option value='울산광역시'>울산광역시&emsp;</option>
+                                        <option value='전라남도'>전라남도&emsp;&emsp;</option>
+                                        <option value='전라북도'>전라북도&emsp;&emsp;</option>
+                                        <option value='제주특별자치도'>제주특별자치도</option>
+                                        <option value='충청남도'>충청남도&emsp;&emsp;</option>
+                                        <option value='충청북도'>충청북도&emsp;&emsp;</option>
+                                        </select>
+                                    </td>
+                                    <td>17개 시/도 중 선택</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#e9e9e9">업종</td>
+                                    <td>
+                                        <select type="text" class="form-control-sm" name="ind" id="ind">
+                                        <option value='' selected>&emsp;&emsp;&emsp;&emsp;-- 선택 --&emsp;&emsp;&emsp;&emsp;</option>
+                                        <option value='primary'>농업,임업 및 어업&emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                                        <option value='mining'>광업 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                                        <option value='manufacture'>제조업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                                        <option value='energy'>전기,가스,증기 및 수도사업</option>
+                                        <option value='recycle'>폐기물 및 재생사업&emsp;&emsp;&emsp;&emsp;</option>
+                                        <option value='building'>건설업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                                        <option value='retail'>도매및 소매업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                                        <option value='transportation'>운수업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                                        </select>
+                                    </td>
+                                    <td>8개 업종 중 선택</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#e9e9e9">주력 에너지원</td>
+                                    <td></td>
+                                    <td>18개 세부에너지 선택</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#e9e9e9">절감기술 우선순위</td>
+                                    <td></td>
+                                    <td>이미지</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#e9e9e9">전력사용량</td>
+                                    <td colspan="2"><input type='number' name='elec' id='elec' onkeyup='call2()'> kWh/년</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#e9e9e9">탄소발생량</td>
+                                    <td colspan="2"><input type='number' name='co2' id='co2' readonly > Kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#e9e9e9">전력사용량</td>
+                                    <td colspan="2"><input type='number' name='tree' id='tree' readonly > 그루</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="button-group-area">
+								<br><input type="submit" value="확인" class="btn btn-size" onclick="location='/calculator_option'">
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Header End -->
-	</header>
-	<main>
-		<!--? Hero Start -->
-		<div class="slider-area2">
-			<div class="slider-height2 d-flex align-items-center">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-12">
-							<div class="hero-cap hero-cap2 pt-70">
-								<h2>탄소 계산기</h2>
-								<nav aria-label="breadcrumb">
-									<ol class="breadcrumb">
-										<li class="breadcrumb-item"><a href="index">Home</a></li>
-										<li class="breadcrumb-item"><a href="#">탄소 계산기</a></li>
-									</ol>
-								</nav>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Hero End -->
-		<div class="section-top-border">
-			<script language='javascript'>
-			function call()
-			{
-			 if(document.getElementById("elec").value && document.getElementById("cell2").value){
-			  document.getElementById('co2').value =parseInt(document.getElementById('elec').value) + parseInt(document.getElementById('cell2').value);
-			 }
-			}
-			function call2()
-			{
-			 if(document.getElementById("elec").value){
-			  document.getElementById('tree').value = Math.round((((parseInt(document.getElementById('elec').value)  * 0.4663)/ 6.6) / 0.1) * 0.1);
-			 }{
-			  document.getElementById('co2').value = (Math.round((parseInt(document.getElementById('elec').value)  * 0.4663) / 0.1)) * 0.1;
-			 }
-			}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-wrapper">
+           <!-- Footer Start-->
+           <div class="footer-area footer-padding">
+               <div class="container ">
+                   <div class="row justify-content-between">
+                       <div class="col-xl-4 col-lg-3 col-md-8 col-sm-8">
+                           <div class="single-footer-caption mb-50">
+                               <div class="single-footer-caption mb-30">
+                                   <!-- logo -->
+                                   <div class="footer-logo mb-35">
+                                       <a href="index.html"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                                   </div>
+                                   <div class="footer-tittle">
+                                       <div class="footer-pera">
+                                           <p>The automated process starts as soon as your clothes go into the machine.</p>
+                                       </div>
+                                   </div>
+                                   <!-- social -->
+                                   <div class="footer-social">
+                                       <a href="#"><i class="fab fa-twitter"></i></a>
+                                       <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                       <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4">
+                           <div class="single-footer-caption mb-50">
+                               <div class="footer-tittle">
+                                   <h4>Reference</h4>
+                                   <ul>
+                                       <li><a style="font-size:13px;" href="https://www.kiep.go.kr/gallery.es?mid=a10102010000&bid=0002&list_no=9608&act=view">KIEP, '탄소중립 대응 방향'</a></li>
+                                       <li><a style="font-size:13px;" href="https://assets.kpmg/content/dam/kpmg/xx/pdf/2020/11/towards-net-zero.pdf">KPMG, 'Towards Net Zero'</a></li>
+                                       <li><a style="font-size:13px;" href="https://www.pwc.com/kr/ko/publications/research-insights/samilpwc_the-state-of-climate-tech.pdf">PwC삼일, '기후기술 보고서'</a></li>
+                                       <li><a style="font-size:13px;" href="https://www.kosif.org/wp-content/uploads/2021/05/CDP-2020-%EA%B5%AD%EB%AC%B8%EB%B3%B4%EA%B3%A0%EC%84%9C_optimize.pdf">EY한영, 'ESG, 탄소중립'</a></li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+                           <div class="single-footer-caption mb-50">
+                               <div class="footer-tittle">
+                                   <h4>Our Team</h4>
+                                   <ul>
+                                       <li><a href="https://github.com/creamcheesesteak">임태혁</a></li>
+                                       <li><a href="https://github.com/kaya1436">신채원</a></li>
+                                       <li><a href="https://github.com/rcm2000">노청명</a></li>
+                                       <li><a href="https://github.com/yoonputer">복정훈</a></li>
+                                       <li><a href="https://github.com/SolbiChoi">최솔비</a></li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-4">
+                           <div class="single-footer-caption mb-50">
+                               <div class="footer-tittle">
+                                   <h4>Contact us</h4>
+                                   <ul>
+                                       <li><a href="https://github.com/creamcheesesteak/Project_Guardians">Project Github</a></li>
+                                       <li><a href="#">K-Digital, Final Project 5조</a></li>
+                                       <li><a href="#">Privacy Policy</a></li>
+                                       <li class="number"><a href="#">Tel</a></li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <!-- footer-bottom area -->
+           <div class="footer-bottom-area">
+               <div class="container">
+                   <div class="footer-border">
+                       <div class="row d-flex align-items-center">
+                           <div class="col-xl-12 ">
+                               <div class="footer-copy-right text-center">
+                                   <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- Footer End-->
+          </div>
+      </footer>
+      <!-- Scroll Up -->
+      <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
 
-			function alert_add()
-			{
-				if(document.getElementById('co2').value < 15)
-				{
-					alert("값 미입력 또는 전기사용량 32이하의 값 입력");
-				}
-				else
-				{
-					location.href = '/calculator_option'
-				}
+    <!-- JS here -->
+    <script src="{% static 'assets/js/cal.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
 
-			 }
-			</script>
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static 'assets/js/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/animated.headline.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
 
-			<div class="container box_1170" id="content">
-			<html>
-			<head>
-			<meta charset="EUC-KR">
-			<title>테이블</title>
-			</head>
-			<body>
-			<style>
-			  table, th, td {
-				border: 1px solid #bcbcbc;
-			  }
+    <!-- Date Picker -->
+    <script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+    <!-- Progress -->
+    <script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
 
-			  td {
-				text-align: right;
-			  }
-			</style>
-			<form name="search" action="/calculator_option" method="GET" class="pageDiv">
-				<table border="1">
-				<tr><!-- 첫번째 줄 시작 -->
-					<td style="word-break:break-all">지역
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
 
-					<td>	<select type="text" class="form-control-sm" name="sido" id="sido">
-								<option value='' selected>&emsp;-- 선택 --&emsp;</option>
-								<option value='강원도'>강원도&emsp;&emsp;&emsp;</option>
-								<option value='경기도'>경기도&emsp;&emsp;&emsp;</option>
-								<option value='경상남도'>경상남도&emsp;&emsp;</option>
-								<option value='경상북도'>경상북도&emsp;&emsp;</option>
-								<option value='광주광역시'>광주광역시&emsp;</option>
-								<option value='대구광역시'>대구광역시&emsp;</option>
-								<option value='대전광역시'>대전광역시&emsp;</option>
-								<option value='부산광역시'>부산광역시&emsp;</option>
-								<option value='서울특별시'>서울특별시&emsp;</option>
-								<option value='세종특별자치시'>세종특별자치시</option>
-								<option value='울산광역시'>울산광역시&emsp;</option>
-								<option value='전라남도'>전라남도&emsp;&emsp;</option>
-								<option value='전라북도'>전라북도&emsp;&emsp;</option>
-								<option value='제주특별자치도'>제주특별자치도</option>
-								<option value='충청남도'>충청남도&emsp;&emsp;</option>
-								<option value='충청북도'>충청북도&emsp;&emsp;</option>
-								</select></td>
+    <!-- contact js -->
+    <script src="{% static 'assets/js/contact.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'assets/js/mail-script.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
 
-					<td>&emsp;&emsp;&emsp;업종 </td>
-					<td><select type="text" class="form-control-sm" name="ind" id="ind">
-								<option value='' selected>&emsp;&emsp;&emsp;&emsp;-- 선택 --&emsp;&emsp;&emsp;&emsp;</option>
-								<option value='primary'>농업,임업 및 어업&emsp;&emsp;&emsp;&emsp;&emsp;</option>
-								<option value='mining'>광업 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
-								<option value='manufacture'>제조업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
-								<option value='energy'>전기,가스,증기 및 수도사업</option>
-								<option value='recycle'>폐기물 및 재생사업&emsp;&emsp;&emsp;&emsp;</option>
-								<option value='building'>건설업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
-								<option value='retail'>도매및 소매업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
-								<option value='transportation'>운수업&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</option>
-								</select></td>
-					</tr><!-- 첫번째 줄 끝 -->
-				<tr><!-- 두번째 줄 시작 -->
-					<td>전기 사용량</td><td colspan="3"><input type='number' name='elec' id='elec' onkeyup='call2()'> kWh/년
-					</td>
-				</tr><!-- 두번째 줄 끝 -->
-			<!--        <tr>&lt;!&ndash; 세번째 줄 시작 &ndash;&gt;-->
-			<!--        <td>전기 요금</td><td colspan="3"><input type='number' name='cell2' id='cell2' onkeyup='call()'>원/월</td>-->
-			<!--	</tr>&lt;!&ndash; 세번째 줄 끝 &ndash;&gt;-->
-					<tr><!-- 두번째 줄 시작 -->
-					<td>탄소 발생량</td><td colspan="3"><input type='number' name='co2' id='co2' readonly >&emsp;&emsp;&nbsp;&nbsp;Kg</td>
-				</tr><!-- 두번째 줄 끝 -->
-					<tr><!-- 두번째 줄 시작 -->
-					<td>필요 소나무</td><td colspan="3"><input type='number' name='tree' id='tree' readonly >&emsp;&emsp;그루</td>
-				</tr><!-- 두번째 줄 끝 -->
-				</table>
-				<div class="button-group-area">
-					<br><input type="submit" value="확인" class="btn btn-block" onclick="alert_add()">
-				</div>
-			</form>
-
-
-			</body>
-			</html>
-			</div>
-		</div>
-	<!-- End Align Area -->
-	</main>
-	<footer>
-			<div class="footer-wrapper">
-			   <!-- Footer Start-->
-			   <div class="footer-area footer-padding">
-				   <div class="container ">
-					   <div class="row justify-content-between">
-						   <div class="col-xl-4 col-lg-3 col-md-8 col-sm-8">
-							   <div class="single-footer-caption mb-50">
-								   <div class="single-footer-caption mb-30">
-									   <!-- logo -->
-									   <div class="footer-logo mb-35">
-										   <a href="index.html"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>
-									   </div>
-									   <div class="footer-tittle">
-										   <div class="footer-pera">
-											   <p>The automated process starts as soon as your clothes go into the machine.</p>
-										   </div>
-									   </div>
-									   <!-- social -->
-									   <div class="footer-social">
-										   <a href="#"><i class="fab fa-twitter"></i></a>
-										   <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-										   <a href="#"><i class="fab fa-pinterest-p"></i></a>
-									   </div>
-								   </div>
-							   </div>
-						   </div>
-						   <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4">
-							   <div class="single-footer-caption mb-50">
-								   <div class="footer-tittle">
-									   <h4>Reference</h4>
-									   <ul>
-										   <li><a style="font-size:13px;" href="https://www.kiep.go.kr/gallery.es?mid=a10102010000&bid=0002&list_no=9608&act=view">KIEP, '탄소중립 대응 방향'</a></li>
-										   <li><a style="font-size:13px;" href="https://assets.kpmg/content/dam/kpmg/xx/pdf/2020/11/towards-net-zero.pdf">KPMG, 'Towards Net Zero'</a></li>
-										   <li><a style="font-size:13px;" href="https://www.pwc.com/kr/ko/publications/research-insights/samilpwc_the-state-of-climate-tech.pdf">PwC삼일, '기후기술 보고서'</a></li>
-										   <li><a style="font-size:13px;" href="https://www.kosif.org/wp-content/uploads/2021/05/CDP-2020-%EA%B5%AD%EB%AC%B8%EB%B3%B4%EA%B3%A0%EC%84%9C_optimize.pdf">EY한영, 'ESG, 탄소중립'</a></li>
-									   </ul>
-								   </div>
-							   </div>
-						   </div>
-						   <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
-							   <div class="single-footer-caption mb-50">
-								   <div class="footer-tittle">
-									   <h4>Our Team</h4>
-									   <ul>
-										   <li><a href="https://github.com/creamcheesesteak">임태혁</a></li>
-										   <li><a href="https://github.com/kaya1436">신채원</a></li>
-										   <li><a href="https://github.com/rcm2000">노청명</a></li>
-										   <li><a href="https://github.com/yoonputer">복정훈</a></li>
-										   <li><a href="https://github.com/SolbiChoi">최솔비</a></li>
-									   </ul>
-								   </div>
-							   </div>
-						   </div>
-						   <div class="col-xl-3 col-lg-4 col-md-6 col-sm-4">
-							   <div class="single-footer-caption mb-50">
-								   <div class="footer-tittle">
-									   <h4>Contact us</h4>
-									   <ul>
-										   <li><a href="https://github.com/creamcheesesteak/Project_Guardians">Project Github</a></li>
-										   <li><a href="#">K-Digital, Final Project 5조</a></li>
-										   <li><a href="#">Privacy Policy</a></li>
-										   <li class="number"><a href="#">Tel</a></li>
-									   </ul>
-								   </div>
-							   </div>
-						   </div>
-					   </div>
-				   </div>
-			   </div>
-			   <!-- footer-bottom area -->
-			   <div class="footer-bottom-area">
-				   <div class="container">
-					   <div class="footer-border">
-						   <div class="row d-flex align-items-center">
-							   <div class="col-xl-12 ">
-								   <div class="footer-copy-right text-center">
-									   <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-										  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-										  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-									  </div>
-								  </div>
-							  </div>
-						  </div>
-					  </div>
-				  </div>
-				  <!-- Footer End-->
-			  </div>
-		  </footer>
-	<!-- Scroll Up -->
-	<div id="back-top" >
-		<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-	</div>
-	<!-- JS here -->
-
-
-	<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
-	<!-- Jquery, Popper, Bootstrap -->
-	<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
-	<script src="{% static 'assets/js/popper.min.js' %}"></script>
-	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-	<!-- Jquery Mobile Menu -->
-	<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
-
-	<!-- Jquery Slick , Owl-Carousel Plugins -->
-	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-	<script src="{% static 'assets/js/slick.min.js' %}"></script>
-	<!-- One Page, Animated-HeadLin -->
-	<script src="{% static 'assets/js/wow.min.js' %}"></script>
-	<script src="{% static 'assets/js/animated.headline.js' %}"></script>
-	<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
-
-	<!-- Date Picker -->
-	<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
-	<!-- Nice-select, sticky -->
-	<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
-	<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
-	<!-- Progress -->
-	<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
-
-	<!-- counter , waypoint,Hover Direction -->
-	<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
-	<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
-	<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
-	<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
-
-	<!-- contact js -->
-	<script src="{% static 'assets/js/contact.js' %}"></script>
-	<script src="{% static 'assets/js/jquery.form.js' %}"></script>
-	<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
-	<script src="{% static 'assets/js/mail-script.js' %}"></script>
-	<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
-
-	<!-- Jquery Plugins, main Jquery -->
-	<script src="{% static 'assets/js/plugins.js' %}"></script>
-	<script src="{% static 'assets/js/main.js' %}"></script>
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 
 </body>
 </html>
