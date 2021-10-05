@@ -305,7 +305,10 @@ def calculator_result(request):
 	tree = request.GET.get('user_tree');
 
 	ind_ko = request.GET.get('ind_name');
-	reduce_co2 = round(float(request.GET.get('co2')), 3)
+	try:
+		reduce_co2 = round(float(request.GET.get('co2')), 3)
+	except ValueError:
+		return render(request, 'elements.html')
 	reduce_money = request.GET.get('money');
 
 	# def
