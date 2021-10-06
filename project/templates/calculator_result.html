@@ -32,6 +32,10 @@
 
     div#content div.pageDiv {width:1100px; height:750px; background:white; position:absolute; background-position:center; top:300px; left:200px; border-radius:30px;}
     div#content div.pageDiv div.inputZone {margin-top:35px; margin-left:50px; font-weight:700px; }
+    div#content div.pageDiv div.inputZone h3 {font-weight:700; float:left; font-size:20px;}
+
+    div#content div.pageDiv div.inputZone {font-size:17px; font-weight:bold; line-height:23px; font-family:'Noto Sans Kr'; }
+	div#content div.pageDiv div.inputZone span { color:#ff4d4d; }
 
     table {width:95%;border: 1px solid #444444;border-collapse: collapse;}
     th, td {border: 1px solid #444444;}
@@ -114,7 +118,7 @@
 						<table>
 							<tbody>
 							<tr>
-								<td colspan="2" style="width:50%"><h3>이산화탄소 배출현황 및 비교</h3></td>
+								<td colspan="2" style="width:50%;"><h3>이산화탄소 배출현황 및 비교</h3></td>
 								<td><h3>{{sido}}의 평균 이산화탄소배출량과 예측치 시각화</h3></td>
 							</tr>
 							<tr>
@@ -238,14 +242,15 @@
 								<td><h3>예측치와 감축적용시 비교</h3></td>
 							</tr>
 							<tr>
-								<td></td>
-								<td rowspan="3">
-									귀사의 연간 이산화탄소 배출량은 총 <span class="my_co2" style="color: #FF2800">{{co2}}</span>이며,
+								<td style="padding-right:5px;"><img src="static/assets/img/orange.png" style="padding-bottom:35px;">
+                                </td>
+								<td rowspan="3" style="padding-bottom:70px; padding-right:20px;">
+									귀사의 연간 이산화탄소 배출량은 총 <span class="my_co2">{{co2}}</span>이며,<br>
 									<span class="my_ind" style="color: #999DA0">{{ind}}</span>-<span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약
-									<span class="my_ratio" style="color: #FF2800">{{ratio}}% {{compare}} 배출</span>하고 있습니다.<br><br>
-									이만큼의 이산화탄소를 없애기 위해서는 약<span class="my_tree" style="color: #FF2800">{{tree}}</span>그루의 소나무를 심어야합니다.<br><br>
+									<span class="my_ratio">{{ratio}}% {{compare}} 배출</span>하고 있습니다.<br><br>
+									이만큼의 이산화탄소를 없애기 위해서는 약<span class="my_tree">{{tree}}</span>그루의 소나무를 심어야합니다.<br><br>
 									정부는 탄소중립을 위해서 2030년까지 2017년기준 24.4%를 감축하기로 선언했습니다. 귀사는 정부시책에 따라 2030년까지
-									<span class="my_target" style="color: #FF2800">{{c_target}}</span>의 배출량 감축을 수행해야합니다.
+									<span class="my_target">{{c_target}}</span>의 배출량 감축을 수행해야합니다.
 								</td>
 								<td rowspan="3">
 									<div id='compare_result' style="width:100%; height:320px;">
@@ -276,10 +281,10 @@
 								</td>
 							</tr>
 							<tr>
-								<td></td>
+								<td><img src="static/assets/img/orange.png" style="padding-bottom:32px;"></td>
 							</tr>
 							<tr>
-								<td></td>
+								<td height="150px;"><img src="static/assets/img/orange.png" style="padding-bottom:130px;"></td>
 							</tr>
 							</tbody>
 						</table>
