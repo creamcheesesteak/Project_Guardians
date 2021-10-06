@@ -61,6 +61,31 @@ function getCheckboxValue(event)  {
                 money_val += parseFloat(money_result);
                 document.getElementById('money').value = Math.round(money_val * 100) / 100;
                 break;
+            case 'sol11':
+                money_result = document.getElementById('money11').value;
+                money_val += parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol12':
+                money_result = document.getElementById('money12').value;
+                money_val += parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol13':
+                money_result = document.getElementById('money13').value;
+                money_val += parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol14':
+                money_result = document.getElementById('money14').value;
+                money_val += parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol15':
+                money_result = document.getElementById('money15').value;
+                money_val += parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
             }
 
   }else {
@@ -116,6 +141,31 @@ function getCheckboxValue(event)  {
                 break;
             case 'sol10':
                 money_result = document.getElementById('money10').value;
+                money_val -= parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol11':
+                money_result = document.getElementById('money11').value;
+                money_val -= parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol12':
+                money_result = document.getElementById('money12').value;
+                money_val -= parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol13':
+                money_result = document.getElementById('money13').value;
+                money_val -= parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol14':
+                money_result = document.getElementById('money14').value;
+                money_val -= parseFloat(money_result);
+                document.getElementById('money').value = Math.round(money_val * 100) / 100;
+                break;
+            case 'sol15':
+                money_result = document.getElementById('money15').value;
                 money_val -= parseFloat(money_result);
                 document.getElementById('money').value = Math.round(money_val * 100) / 100;
                 break;

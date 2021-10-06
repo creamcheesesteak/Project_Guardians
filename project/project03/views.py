@@ -184,102 +184,66 @@ def calculator_option(request):
 		user_co2 = request.GET.get('co2');
 		user_tree = request.GET.get('tree');
 		sido = request.GET.get('sido');
-
-
 		ind = request.GET.get('ind');
-		data = Co2().c1(ind);
-		data_sorting = Co2().c2(ind);
-		money = Co2().c3(ind);
-		deco2 = Co2().c4(ind);
+
+
+		data_sorting = Co2().ind_name(ind);
 		ind_mean = Co2().graph(ind,sido)
 
-		test_data = Co2().sol1_alt(ind,user_co2)
+		sort_base = Co2().sol1_alt(ind,user_co2)
+		sort_fuel = Co2().sol1_alt_fuel(ind,user_co2)
+		sort_elec = Co2().sol1_alt_elec(ind,user_co2)
 
-		# 원래꺼
-	# 	context = {
-	# 		'sol1': data[0],
-	# 		'sol2': data[1],
-	# 		'sol3': data[2],
-	# 		'sol4': data[3],
-	# 		'sol5': data[4],
-	# 		'sol6': data[5],
-	# 		'sol7': data[6],
-	# 		'sol8': data[7],
-	# 		'sol9': data[8],
-	# 		'sol10': data[9],
-	# 		'sort' : data_sorting[0],
-	#
-	# 		'ind': ind,
-	#
-	# 		'money1': money[0],
-	# 		'money2': money[1],
-	# 		'money3': money[2],
-	# 		'money4': money[3],
-	# 		'money5': money[4],
-	# 		'money6': money[5],
-	# 		'money7': money[6],
-	# 		'money8': money[7],
-	# 		'money9': money[8],
-	# 		'money10': money[9],
-	# 		'deco1': deco2[0],
-	# 		'deco2': deco2[1],
-	# 		'deco3': deco2[2],
-	# 		'deco4': deco2[3],
-	# 		'deco5': deco2[4],
-	# 		'deco6': deco2[5],
-	# 		'deco7': deco2[6],
-	# 		'deco8': deco2[7],
-	# 		'deco9': deco2[8],
-	# 		'deco10': deco2[9],
-	# 		'user_elec' : user_elec,
-	# 		'user_co2' : user_co2,
-	# 		'user_tree' : user_tree,
-	# 		'result_sido': sido,
-	# 		'ind_elec' : ind_mean[0],
-	# 		'ind_co2' : ind_mean[1],
-	# 		'ind_tree' : ind_mean[2],
-	# 	};
-	# except IndexError:
-	# 	return render(request, 'elements.html')
-	# except AttributeError:
-	# 	return render(request, 'elements.html')
-	#
-	# return render(request, 'calculator_option.html', context)
 		context = {
-			'sol1': test_data[10],
-			'sol2': test_data[11],
-			'sol3': test_data[12],
-			'sol4': test_data[13],
-			'sol5': test_data[14],
-			'sol6': test_data[15],
-			'sol7': test_data[16],
-			'sol8': test_data[17],
-			'sol9': test_data[18],
-			'sol10': test_data[19],
+			'sol1': sort_base[5],
+			'sol2': sort_base[6],
+			'sol3': sort_base[7],
+			'sol4': sort_base[8],
+			'sol5': sort_base[9],
+			'sol6': sort_fuel[5],
+			'sol7': sort_fuel[6],
+			'sol8': sort_fuel[7],
+			'sol9': sort_fuel[8],
+			'sol10': sort_fuel[9],
+			'sol11': sort_elec[5],
+			'sol12': sort_elec[6],
+			'sol13': sort_elec[7],
+			'sol14': sort_elec[8],
+			'sol15': sort_elec[9],
 			'sort' : data_sorting[0],
 
 			'ind': ind,
 
-			'money1': test_data[20],
-			'money2': test_data[21],
-			'money3': test_data[22],
-			'money4': test_data[23],
-			'money5': test_data[24],
-			'money6': test_data[25],
-			'money7': test_data[26],
-			'money8': test_data[27],
-			'money9': test_data[28],
-			'money10': test_data[29],
-			'deco1': test_data[0],
-			'deco2': test_data[1],
-			'deco3': test_data[2],
-			'deco4': test_data[3],
-			'deco5': test_data[4],
-			'deco6': test_data[5],
-			'deco7': test_data[6],
-			'deco8': test_data[7],
-			'deco9': test_data[8],
-			'deco10': test_data[9],
+			'money1': sort_base[10],
+			'money2': sort_base[11],
+			'money3': sort_base[12],
+			'money4': sort_base[13],
+			'money5': sort_base[14],
+			'money6': sort_fuel[10],
+			'money7': sort_fuel[11],
+			'money8': sort_fuel[12],
+			'money9': sort_fuel[13],
+			'money10': sort_fuel[14],
+			'money11': sort_elec[10],
+			'money12': sort_elec[11],
+			'money13': sort_elec[12],
+			'money14': sort_elec[13],
+			'money15': sort_elec[14],
+			'deco1': sort_base[0],
+			'deco2': sort_base[1],
+			'deco3': sort_base[2],
+			'deco4': sort_base[3],
+			'deco5': sort_base[4],
+			'deco6': sort_fuel[0],
+			'deco7': sort_fuel[1],
+			'deco8': sort_fuel[2],
+			'deco9': sort_fuel[3],
+			'deco10': sort_fuel[4],
+			'deco11': sort_elec[0],
+			'deco12': sort_elec[1],
+			'deco13': sort_elec[2],
+			'deco14': sort_elec[3],
+			'deco15': sort_elec[4],
 			'user_elec' : user_elec,
 			'user_co2' : user_co2,
 			'user_tree' : user_tree,
@@ -288,8 +252,7 @@ def calculator_option(request):
 			'ind_co2' : ind_mean[1],
 			'ind_tree' : ind_mean[2],
 		};
-	except IndexError:
-		return render(request, 'elements.html')
+
 	except AttributeError:
 		return render(request, 'elements.html')
 	except ValueError:
