@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/highcharts.css' %}">
+
 	<style>
 	div#content {background:url('static/assets/img/main_bg.png') no-repeat; height:1100px; background-position:center;}
     div#content div#content div.section {min-height:900px; }
@@ -109,22 +110,33 @@
 						<div class="left">
 						<form method="get" action="form-action.html">
 						  	<h3 id="sort_name">{{sort}}에 관한 감축방안</h3>
-							<div class = sorting_act>
-								<label class="switch-button"><input type="checkbox" id ="sol1" value={{deco1}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol1}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol2" value={{deco2}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol2}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol3" value={{deco3}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol3}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol4" value={{deco4}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol4}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol5" value={{deco5}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol5}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol6" value={{deco6}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol6}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol7" value={{deco7}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol7}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol8" value={{deco8}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol8}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol9" value={{deco9}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol9}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol10" value={{deco10}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol10}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol11" value={{deco11}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol11}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol12" value={{deco12}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol12}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol13" value={{deco13}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol13}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol14" value={{deco14}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol14}}<br>
-								<label class="switch-button"><input type="checkbox" id ="sol15" value={{deco15}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol15}}<br>
+							<div class="container" id="tabs_container">
+								  <ul class="tabs">
+									<li class="tab-link current" data-tab="tab-1">탄소 감축량</li>
+									<li class="tab-link" data-tab="tab-2">에너지 절감량(연료)</li>
+									<li class="tab-link" data-tab="tab-3">에너지 절감량(전력)</li>
+								  </ul>
+								  <div id="tab-1" class="tab-content current">
+									<label class="switch-button"><input type="checkbox" id ="sol1" value={{deco1}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol1}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol2" value={{deco2}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol2}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol3" value={{deco3}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol3}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol4" value={{deco4}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol4}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol5" value={{deco5}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol5}}<br>
+								  </div>
+								 <div id="tab-2" class="tab-content">
+									<label class="switch-button"><input type="checkbox" id ="sol6" value={{deco6}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol6}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol7" value={{deco7}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol7}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol8" value={{deco8}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol8}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol9" value={{deco9}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol9}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol10" value={{deco10}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol10}}<br>
+								 </div>
+								 <div id="tab-3" class="tab-content">
+									<label class="switch-button"><input type="checkbox" id ="sol11" value={{deco11}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol11}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol12" value={{deco12}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol12}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol13" value={{deco13}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol13}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol14" value={{deco14}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol14}}<br>
+									<label class="switch-button"><input type="checkbox" id ="sol15" value={{deco15}} onclick="getCheckboxValue(event)"><span class="onoff-switch"></span></label> &nbsp;{{sol15}}<br>
+								 </div>
 							</div>
 
 							<td><input type='number' name='co2' id='co2' style="width:150px" readonly> tCO₂/yr</td>
@@ -409,6 +421,22 @@
 	});
 
 
+	</script>
+	<!-- tab script -->
+	<script>
+		$(document).ready(function(){
+
+			$('ul.tabs li').click(function(){
+				var tab_id = $(this).attr('data-tab');
+
+				$('ul.tabs li').removeClass('current');
+				$('.tab-content').removeClass('current');
+
+				$(this).addClass('current');
+				$("#"+tab_id).addClass('current');
+			})
+
+		})
 	</script>
 </form>
 </body>
