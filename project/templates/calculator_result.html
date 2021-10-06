@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns="http://www.w3.org/1999/html">
 {% load static %}
 <head>
 	<meta charset="utf-8">
@@ -21,23 +21,40 @@
     <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+	<style>
+	div#content {background:url('static/assets/img/main_bg.png') no-repeat; height:1300px; background-position:center;}
+    div#content div.section {min-height:900px; }
 
-	<!-- Load plotly.js into the DOM : 1.basic_bar 2.timeseires 3.line-->
-	<script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+    div#content div.pageDiv {width:1100px; height:770px; background:white; position:absolute; background-position:center; top:300px; left:200px; border-radius:30px;}
+    div#content div.pageDiv div.inputZone {margin-top:40px; margin-left:50px; margin-right:50px; margin-bottom:40px; font-weight:700px; }
+    div#content div.pageDiv div.inputZone h3 {color:black; font-weight:700; float:left; font-size:20px;}
 
+    div.left {width: 50%;float: left;box-sizing: border-box;}
+	div.right {width: 50%;float: right;box-sizing: border-box;}
+
+    div#content div.pageDiv div.inputZone div.left div.chartZone {height:50%; float:top;}
+
+    div#content div.pageDiv div.inputZone div.left div.report_msg {margin-left:10px; margin-top:30px;}
+    div#content div.pageDiv div.inputZone div.left div.report_msg ul li {background:url('static/assets/img/li_orange.png')left 8px no-repeat; padding-left:10px; font-size:17px; font-weight:600; font-family:'Noto Sans Kr'; white-space:nowrap; }
+    div#content div.pageDiv div.inputZone div.left div.report_msg ul li span { color:#ff4d4d; font-family:'Noto Sans Kr'; }
+
+    div#content div.pageDiv div.inputZone div.right div.report_msg {height:50%; float:bottom;}
+
+	</style>
 </head>
 <body>
 	<!--? Preloader Start -->
 	<div id="preloader-active">
-		<div class="preloader d-flex align-items-center justify-content-center">
-			<div class="preloader-inner position-relative">
-				<div class="preloader-circle"></div>
-				<div class="preloader-img pere-text">
-					<img src="{% static 'assets/img/logo/loder.png' %}" alt="">
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- Preloader Start -->
 	<header>
 		<!-- Header Start -->
@@ -92,176 +109,188 @@
 		<!-- Header End -->
 	</header>
 	<main>
-		<!--? Hero Start -->
-		<div class="slider-area2">
-			<div class="slider-height2 d-flex align-items-center">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-12">
-							<div class="hero-cap hero-cap2 pt-70">
-								<h2>탄소 계산기</h2>
-								<nav aria-label="breadcrumb">
-									<ol class="breadcrumb">
-										<li class="breadcrumb-item"><a href="index">Home</a></li>
-										<li class="breadcrumb-item"><a href="#">탄소 계산기</a></li>
-									</ol>
-								</nav>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Hero End -->
-<!--ATTACH START-->
+		<div id="content">
+            <div class="section">
+                <div class="pageDiv">
+					<div class="inputZone">
+						<div class="left">
+                            <h3>이산화탄소 배출현황 및 비교</h3>
+                            <div class="chartZone">
+                                <div id='basic_bar' style="padding-top:25px;height:380px;">
+                                <script>
+                                    var data = [
+                                      {
+                                        x: ['경쟁사', '귀사', '기술적용', '정부목표'],
+                                        y: {{ bar_value | safe}},
+                                        marker:{
+                                            color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
+                                          },
+                                        type: 'bar'
+                                      }
+                                    ];
 
-		<h1>{{ind}}{{sido}}의 평균 이산화탄소배출량과 예측치 시각화</h1>
-		<!-- time series visualization -->
-		<div id='timeseries' style="width:60%;max-width:550px"></div>
-			<script>
-				var raw = {
-				  x: {{ date | safe}},
-				  y: {{ raw | safe}},
-				  type: 'scatter',
-				  name: 'past',
-				  mode: 'line',
-				  line: {color: '#89CFEF'}
-				};
+                                    Plotly.newPlot('basic_bar', data);
+                                </script>
+                                </div>
+                            <div class="report_msg">
+                                <ul>
+                                    <li style="margin-bottom:10px;">
+                                        귀사의 연간 이산화탄소 배출량은 총
+                                        <span class="my_co2" >{{co2}}</span>
+                                        이며,<br>
+                                        <span class="my_ind" style="color: #999DA0">{{ind}}</span>
+                                        -
+                                        <span class="my_sido" style="color: #999DA0">{{sido}}</span>
+                                        의 동일지역 경쟁사보다<br> 약
+                                        <span class="my_ratio">{{ratio}}% {{compare}} 배출</span>
+                                        하고 있습니다.
+                                    </li>
+                                    <li style="margin-bottom:10px;">
+                                        이만큼의 이산화탄소를 없애기 위해서는<br> 약
+                                        <span class="my_tree">{{tree}}</span>
+                                        그루의 소나무를 심어야합니다.
+                                    </li>
+                                    <li>
+                                        정부는 탄소중립을 위해서 2030년까지<br> 2017년기준 24.4%를 감축하기로 선언했습니다.<br> 귀사는 정부시책에 따라 2030년까지<br>
+                                        <span class="my_target" style="color: #FF2800">{{c_target}}</span>
+                                        의 배출량 감축을 수행해야합니다.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="right">
+                            <div class="chartZone">
+                                <h3>{{ind}}{{sido}}의 평균 이산화탄소배출량과 예측치</h3>
+                                <div id='timeseries' style="padding-top:30px;height:320px;">
+                                <script>
+                                        var raw = {
+                                          x: {{ date | safe}},
+                                          y: {{ raw | safe}},
+                                          type: 'scatter',
+                                          name: 'past',
+                                          mode: 'line',
+                                          line: {color: '#89CFEF'}
+                                        };
 
-				var upper = {
-				  x: {{ date | safe}},
-				  y: {{ upper | safe}},
-				  fill: 'tonexty',
-				  fillcolor: 'white',
-				  type: 'scatter',
-				  name: 'criteria',
-				  mode: 'none'
-				};
+                                        var upper = {
+                                          x: {{ date | safe}},
+                                          y: {{ upper | safe}},
+                                          fill: 'tonexty',
+                                          fillcolor: 'white',
+                                          type: 'scatter',
+                                          name: 'criteria',
+                                          mode: 'none'
+                                        };
 
-				var lower = {
-				  x: {{ date | safe}},
-				  y: {{ lower | safe}},
-				  fill: 'tonexty',
-				  fillcolor: '#98FB98',
-				  color: 'white',
-				  type: 'scatter',
-				  name: 'predict_field',
-				  mode: 'none'
-				};
+                                        var lower = {
+                                          x: {{ date | safe}},
+                                          y: {{ lower | safe}},
+                                          fill: 'tonexty',
+                                          fillcolor: '#98FB98',
+                                          color: 'white',
+                                          type: 'scatter',
+                                          name: 'predict_field',
+                                          mode: 'none'
+                                        };
 
-				var mean = {
-				  x: {{ date | safe}},
-				  y: {{ mean | safe}},
-				  type: 'scatter',
-				  name: 'prediction',
-				  mode: 'line',
-				  line: {color: '##D30000'}
-				};
-				var layout = {
-				  title: 'CO2 Emissions',
-				  shapes: [
-				{
-					type: 'rect',
-					// x-reference is assigned to the x-values
-					xref: 'x',
-					// y-reference is assigned to the plot paper [0,1]
-					yref: 'paper',
-					x0: '2018-11-01',
-					y0: 0,
-					x1: '2022-10-01',
-					y1: 1,
-					fillcolor: '#999DA0',
-					opacity: 0.2,
-					line: {
-						width: 0
-					}
-				}],
-				  xaxis: {
-					autorange: true,
-					range: {{ date | safe}},
-					rangeselector: {buttons: [
-						{
-						  count: 1,
-						  label: '1m',
-						  step: 'month',
-						  stepmode: 'backward'
-						},
-						{
-						  count: 6,
-						  label: '6m',
-						  step: 'month',
-						  stepmode: 'backward'
-						},
-						{step: 'all'}
-					  ]},
-					rangeslider: {range: {{ date | safe}}},
-					type: 'date'
-				  },
-				  yaxis: {
-					autorange: true,
-					type: 'linear'
-				  }
-				};
-				// var layout = {
-				//   title: 'CO2 Emissions'
+                                        var mean = {
+                                          x: {{ date | safe}},
+                                          y: {{ mean | safe}},
+                                          type: 'scatter',
+                                          name: 'prediction',
+                                          mode: 'line',
+                                          line: {color: '##D30000'}
+                                        };
+                                        var layout = {
+                                          title: 'CO2 Emissions',
+                                          shapes: [
+                                        {
+                                            type: 'rect',
+                                            // x-reference is assigned to the x-values
+                                            xref: 'x',
+                                            // y-reference is assigned to the plot paper [0,1]
+                                            yref: 'paper',
+                                            x0: '2018-11-01',
+                                            y0: 0,
+                                            x1: '2022-10-01',
+                                            y1: 1,
+                                            fillcolor: '#999DA0',
+                                            opacity: 0.2,
+                                            line: {
+                                                width: 0
+                                            }
+                                        }],
+                                          xaxis: {
+                                            autorange: true,
+                                            range: {{ date | safe}},
+                                            rangeselector: {buttons: [
+                                                {
+                                                  count: 1,
+                                                  label: '1m',
+                                                  step: 'month',
+                                                  stepmode: 'backward'
+                                                },
+                                                {
+                                                  count: 6,
+                                                  label: '6m',
+                                                  step: 'month',
+                                                  stepmode: 'backward'
+                                                },
+                                                {step: 'all'}
+                                              ]},
+                                            rangeslider: {range: {{ date | safe}}},
+                                            type: 'date'
+                                          },
+                                          yaxis: {
+                                            autorange: true,
+                                            type: 'linear'
+                                          }
+                                        };
+                                        // var layout = {
+                                        //   title: 'CO2 Emissions'
 
-				// };
-				var data = [raw, upper, lower, mean];
+                                        // };
+                                        var data = [raw, upper, lower, mean];
 
-				Plotly.newPlot('timeseries', data, layout);
-			</script>
+                                        Plotly.newPlot('timeseries', data, layout);
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="report_msg">
+                                <h3>예측치와 감축적용시 비교</h3>
+                                <div id='compare_result' style="padding-top:30px;height:330px;"></div>
+                                <script>
+                                    var data_defore = {
+                                      x: {{ date | safe}},
+                                      y: {{ my_before | safe}},
+                                      type: 'line',
+                                      line: {color: '#D6CFC7'},
+                                      name: '과거+예측치'
+                                    };
 
-		<h1>이산화탄소 배출현황 및 비교</h1>
-		<!-- basic bac chart visualization -->
-		<div id='basic_bar' style="width:60%;max-width:550px"><!-- Plotly chart will be drawn inside this DIV --></div>
-			<script>
-				var data = [
-				  {
-					x: ['경쟁사', '귀사', '기술적용', '정부목표'],
-					y: {{ bar_value | safe}},
-					marker:{
-						color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
-					  },
-					type: 'bar'
-				  }
-				];
+                                    var data_after = {
+                                      x: {{ date | safe}},
+                                      y: {{ my_after | safe}},
+                                      type: 'line',
+                                      line: {color: '#B40A30'},
+                                      fill: 'tonexty',
+                                      fillcolor: '#B40A30',
+                                      name: '기술적용시 감축량'
+                                    };
 
-				Plotly.newPlot('basic_bar', data);
-			</script>
-		<p>귀사의 연간 이산화탄소 배출량은 총 <span class="my_co2" style="color: #FF2800">{{co2}}</span>이며, <span class="my_ind" style="color: #999DA0">{{ind}}</span>-<span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약<span class="my_ratio" style="color: #FF2800">{{ratio}}% {{compare}} 배출</span>하고 있습니다.</p>
-		<p>이만큼의 이산화탄소를 없애기 위해서는 약<span class="my_tree" style="color: #FF2800">{{tree}}</span>그루의 소나무를 심어야합니다.</p>
-		<p>정부는 탄소중립을 위해서 2030년까지 2017년기준 24.4%를 감축하기로 선언했습니다. 귀사는 정부시책에 따라 2030년까지 <span class="my_target" style="color: #FF2800">{{c_target}}</span>의 배출량 감축을 수행해야합니다.</p>
+                                    var data = [data_defore, data_after];
 
-		<h1>예측치와 감축적용시 비교</h1>
-			<div id='compare_result' style="width:60%;max-width:550px"></div>
-			<script>
-				var data_defore = {
-				  x: {{ date | safe}},
-				  y: {{ my_before | safe}},
-				  type: 'line',
-				  line: {color: '#D6CFC7'},
-				  name: '과거+예측치'
-				};
-
-				var data_after = {
-				  x: {{ date | safe}},
-				  y: {{ my_after | safe}},
-				  type: 'line',
-				  line: {color: '#B40A30'},
-				  fill: 'tonexty',
-				  fillcolor: '#B40A30',
-				  name: '기술적용시 감축량'
-				};
-
-				var data = [data_defore, data_after];
-
-				Plotly.newPlot('compare_result', data);
-			</script>
-
-<!--ATTACH END-->
-								<!-- Blog Area End -->
-							</main>
-							<footer>
+                                    Plotly.newPlot('compare_result', data);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
         <div class="footer-wrapper">
            <!-- Footer Start-->
            <div class="footer-area footer-padding">
@@ -351,52 +380,51 @@
           </div>
       </footer>
 								<!-- Scroll Up -->
-								<div id="back-top" >
-									<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-								</div>
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
 								<!-- JS here -->
 
+    <script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
 
-								<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
-								<!-- Jquery, Popper, Bootstrap -->
-								<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
-								<script src="{% static 'assets/js/popper.min.js' %}"></script>
-								<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-								<!-- Jquery Mobile Menu -->
-								<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static 'assets/js/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/animated.headline.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
 
-								<!-- Jquery Slick , Owl-Carousel Plugins -->
-								<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-								<script src="{% static 'assets/js/slick.min.js' %}"></script>
-								<!-- One Page, Animated-HeadLin -->
-								<script src="{% static 'assets/js/wow.min.js' %}"></script>
-								<script src="{% static 'assets/js/animated.headline.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+    <!-- Date Picker -->
+    <script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+    <!-- Progress -->
+    <script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
 
-								<!-- Date Picker -->
-								<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
-								<!-- Nice-select, sticky -->
-								<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
-								<!-- Progress -->
-								<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
 
-								<!-- counter , waypoint,Hover Direction -->
-								<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
-								<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
-								<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+    <!-- contact js -->
+    <script src="{% static 'assets/js/contact.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.form.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'assets/js/mail-script.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
 
-								<!-- contact js -->
-								<script src="{% static 'assets/js/contact.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.form.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
-								<script src="{% static 'assets/js/mail-script.js' %}"></script>
-								<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 
-								<!-- Jquery Plugins, main Jquery -->
-								<script src="{% static 'assets/js/plugins.js' %}"></script>
-								<script src="{% static 'assets/js/main.js' %}"></script>
-
-							</body>
-							</html>
+</body>
+</html>
