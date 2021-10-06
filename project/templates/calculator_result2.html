@@ -2,78 +2,64 @@
 <html class="no-js" lang="zxx">
 {% load static %}
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Environmental</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Environmental</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<!-- CSS here -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/hamburgers.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+	<!-- Load plotly.js into the DOM : 1.basic_bar 2.timeseires 3.line-->
 	<script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
-    <style>
-    div#content {background:url('static/assets/img/main_bg.png') no-repeat; height:1100px; background-position:center;}
-    div#content div#content div.section {min-height:900px; }
 
-    div#content div.pageDiv {width:1100px; height:750px; background:white; position:absolute; background-position:center; top:300px; left:200px; border-radius:30px;}
-    div#content div.pageDiv div.inputZone {margin-top:35px; margin-left:50px; font-weight:700px; }
-
-    table {width:95%;border: 1px solid #444444;border-collapse: collapse;}
-    th, td {border: 1px solid #444444;}
-    </style>
 </head>
 <body>
-    <!-- ? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-        <div class="header-area">
-            <div class="main-header ">
-                <div class="header-bottom  header-sticky">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a href="index"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10">
-                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
-                                    <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation">
-                                                <li><a href="">Home</a></li>
-<!--                                                <li><a href="about.html">About</a></li>-->
-<!--                                                <li><a href="what-do.html">What we Do</a></li>-->
-<!--                                                <li><a href="projects.html">Projects</a></li>-->
-                                                <li><a href="blog">지역별 온실가스</a>
+	<!--? Preloader Start -->
+	<div id="preloader-active">
+		<div class="preloader d-flex align-items-center justify-content-center">
+			<div class="preloader-inner position-relative">
+				<div class="preloader-circle"></div>
+				<div class="preloader-img pere-text">
+					<img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader Start -->
+	<header>
+		<!-- Header Start -->
+		<div class="header-area">
+			<div class="main-header ">
+				<div class="header-bottom  header-sticky">
+					<div class="container-fluid">
+						<div class="row align-items-center">
+							<!-- Logo -->
+							<div class="col-xl-2 col-lg-2">
+								<div class="logo">
+									<a href="index"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+								</div>
+							</div>
+							<div class="col-xl-10 col-lg-10">
+								<div class="menu-wrapper  d-flex align-items-center justify-content-end">
+									<!-- Main-menu -->
+									<div class="main-menu d-none d-lg-block">
+										<nav>
+											<ul id="navigation">                                                                                          
+												<li><a href="index">Home</a></li>
+												<li><a href="blog">지역별 온실가스</a>
                                                     <ul class="submenu">
                                                         <li><a href="blog#map">지역별 온실가스</a></li>
                                                         <li><a href="blog#news">뉴스 분석</a></li>
@@ -84,211 +70,198 @@
                                                         <li><a href="blog_details#map">기업별 온실가스</a></li>
                                                         <li><a href="blog_details#search">기업별 검색</a></li>
                                                     </ul>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                    <!-- Header-btn -->
-                                    <div class="header-right-btn d-none d-lg-block ml-20">
-                                        <a href="elements" class="btn header-btn">탄소 계산기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
-	<main>
-		<main>
-        <div id="content">
-            <div class="section">
-                <div class="pageDiv">
-                    <div class="inputZone">
-						<table>
-							<tbody>
-							<tr>
-								<td colspan="2" style="width:50%"><h3>이산화탄소 배출현황 및 비교</h3></td>
-								<td><h3>{{sido}}의 평균 이산화탄소배출량과 예측치 시각화</h3></td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<div id='basic_bar' style="width:100%; height:320px;">
-									<script>
-										var data = [
-										  {
-											x: ['경쟁사', '귀사', '기술적용', '정부목표'],
-											y: {{ bar_value | safe}},
-											marker:{
-												color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
-											  },
-											type: 'bar'
-										  }
-										];
-
-										Plotly.newPlot('basic_bar', data);
-									</script>
+												</li>
+											</ul>
+										</nav>
 									</div>
-								</td>
-								<td>
-									<div id='timeseries' style="width:100%; height:320px;">
-									<script>
-										var raw = {
-										  x: {{ date | safe}},
-										  y: {{ raw | safe}},
-										  type: 'scatter',
-										  name: 'past',
-										  mode: 'line',
-										  line: {color: '#89CFEF'}
-										};
-
-										var upper = {
-										  x: {{ date | safe}},
-										  y: {{ upper | safe}},
-										  fill: 'tonexty',
-										  fillcolor: 'white',
-										  type: 'scatter',
-										  name: 'criteria',
-										  mode: 'none'
-										};
-
-										var lower = {
-										  x: {{ date | safe}},
-										  y: {{ lower | safe}},
-										  fill: 'tonexty',
-										  fillcolor: '#98FB98',
-										  color: 'white',
-										  type: 'scatter',
-										  name: 'predict_field',
-										  mode: 'none'
-										};
-
-										var mean = {
-										  x: {{ date | safe}},
-										  y: {{ mean | safe}},
-										  type: 'scatter',
-										  name: 'prediction',
-										  mode: 'line',
-										  line: {color: '##D30000'}
-										};
-										var layout = {
-										  title: 'CO2 Emissions',
-										  shapes: [
-										{
-											type: 'rect',
-											// x-reference is assigned to the x-values
-											xref: 'x',
-											// y-reference is assigned to the plot paper [0,1]
-											yref: 'paper',
-											x0: '2018-11-01',
-											y0: 0,
-											x1: '2022-10-01',
-											y1: 1,
-											fillcolor: '#999DA0',
-											opacity: 0.2,
-											line: {
-												width: 0
-											}
-										}],
-										  xaxis: {
-											autorange: true,
-											range: {{ date | safe}},
-											rangeselector: {buttons: [
-												{
-												  count: 1,
-												  label: '1m',
-												  step: 'month',
-												  stepmode: 'backward'
-												},
-												{
-												  count: 6,
-												  label: '6m',
-												  step: 'month',
-												  stepmode: 'backward'
-												},
-												{step: 'all'}
-											  ]},
-											rangeslider: {range: {{ date | safe}}},
-											type: 'date'
-										  },
-										  yaxis: {
-											autorange: true,
-											type: 'linear'
-										  }
-										};
-										// var layout = {
-										//   title: 'CO2 Emissions'
-
-										// };
-										var data = [raw, upper, lower, mean];
-
-										Plotly.newPlot('timeseries', data, layout);
-									</script>
+									<!-- Header-btn -->
+									<div class="header-right-btn d-none d-lg-block ml-20">
+										<a href="elements" class="btn header-btn">탄소 계산기</a>
 									</div>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2"></td>
-								<td><h3>예측치와 감축적용시 비교</h3></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td rowspan="3">
-									귀사의 연간 이산화탄소 배출량은 총 <span class="my_co2" style="color: #FF2800">{{co2}}</span>이며,
-									<span class="my_ind" style="color: #999DA0">{{ind}}</span>-<span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약
-									<span class="my_ratio" style="color: #FF2800">{{ratio}}% {{compare}} 배출</span>하고 있습니다.<br><br>
-									이만큼의 이산화탄소를 없애기 위해서는 약<span class="my_tree" style="color: #FF2800">{{tree}}</span>그루의 소나무를 심어야합니다.<br><br>
-									정부는 탄소중립을 위해서 2030년까지 2017년기준 24.4%를 감축하기로 선언했습니다. 귀사는 정부시책에 따라 2030년까지
-									<span class="my_target" style="color: #FF2800">{{c_target}}</span>의 배출량 감축을 수행해야합니다.
-								</td>
-								<td rowspan="3">
-									<div id='compare_result' style="width:100%; height:320px;">
-										<script>
-											var data_defore = {
-											  x: {{ date | safe}},
-											  y: {{ my_before | safe}},
-											  type: 'line',
-											  line: {color: '#D6CFC7'},
-											  name: '과거+예측치'
-											};
-
-											var data_after = {
-											  x: {{ date | safe}},
-											  y: {{ my_after | safe}},
-											  type: 'line',
-											  line: {color: '#B40A30'},
-											  fill: 'tonexty',
-											  fillcolor: '#B40A30',
-											  name: '기술적용시 감축량'
-											};
-
-											var data = [data_defore, data_after];
-
-											Plotly.newPlot('compare_result', data);
-										</script>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							</tbody>
-						</table>
+								</div>
+							</div> 
+							<!-- Mobile Menu -->
+							<div class="col-12">
+								<div class="mobile_menu d-block d-lg-none"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		</main>
-		<footer>
+		<!-- Header End -->
+	</header>
+	<main>
+		<!--? Hero Start -->
+		<div class="slider-area2">
+			<div class="slider-height2 d-flex align-items-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="hero-cap hero-cap2 pt-70">
+								<h2>탄소 계산기</h2>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="index">Home</a></li>
+										<li class="breadcrumb-item"><a href="#">탄소 계산기</a></li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Hero End -->
+<!--ATTACH START-->
+
+		<h1>{{ind}}{{sido}}의 평균 이산화탄소배출량과 예측치 시각화</h1>
+		<!-- time series visualization -->
+		<div id='timeseries' style="width:60%;max-width:550px">
+			<script>
+				var raw = {
+				  x: {{ date | safe}},
+				  y: {{ raw | safe}},
+				  type: 'scatter',
+				  name: 'past',
+				  mode: 'line',
+				  line: {color: '#89CFEF'}
+				};
+
+				var upper = {
+				  x: {{ date | safe}},
+				  y: {{ upper | safe}},
+				  fill: 'tonexty',
+				  fillcolor: 'white',
+				  type: 'scatter',
+				  name: 'criteria',
+				  mode: 'none'
+				};
+
+				var lower = {
+				  x: {{ date | safe}},
+				  y: {{ lower | safe}},
+				  fill: 'tonexty',
+				  fillcolor: '#98FB98',
+				  color: 'white',
+				  type: 'scatter',
+				  name: 'predict_field',
+				  mode: 'none'
+				};
+
+				var mean = {
+				  x: {{ date | safe}},
+				  y: {{ mean | safe}},
+				  type: 'scatter',
+				  name: 'prediction',
+				  mode: 'line',
+				  line: {color: '##D30000'}
+				};
+				var layout = {
+				  title: 'CO2 Emissions',
+				  shapes: [
+				{
+					type: 'rect',
+					// x-reference is assigned to the x-values
+					xref: 'x',
+					// y-reference is assigned to the plot paper [0,1]
+					yref: 'paper',
+					x0: '2018-11-01',
+					y0: 0,
+					x1: '2022-10-01',
+					y1: 1,
+					fillcolor: '#999DA0',
+					opacity: 0.2,
+					line: {
+						width: 0
+					}
+				}],
+				  xaxis: {
+					autorange: true,
+					range: {{ date | safe}},
+					rangeselector: {buttons: [
+						{
+						  count: 1,
+						  label: '1m',
+						  step: 'month',
+						  stepmode: 'backward'
+						},
+						{
+						  count: 6,
+						  label: '6m',
+						  step: 'month',
+						  stepmode: 'backward'
+						},
+						{step: 'all'}
+					  ]},
+					rangeslider: {range: {{ date | safe}}},
+					type: 'date'
+				  },
+				  yaxis: {
+					autorange: true,
+					type: 'linear'
+				  }
+				};
+				// var layout = {
+				//   title: 'CO2 Emissions'
+
+				// };
+				var data = [raw, upper, lower, mean];
+
+				Plotly.newPlot('timeseries', data, layout);
+			</script>
+</div>
+		<h1>이산화탄소 배출현황 및 비교</h1>
+		<!-- basic bac chart visualization -->
+		<div id='basic_bar' style="width:60%;max-width:550px"><!-- Plotly chart will be drawn inside this DIV -->
+			<script>
+				var data = [
+				  {
+					x: ['경쟁사', '귀사', '기술적용', '정부목표'],
+					y: {{ bar_value | safe}},
+					marker:{
+						color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
+					  },
+					type: 'bar'
+				  }
+				];
+
+				Plotly.newPlot('basic_bar', data);
+			</script></div>
+		<p>귀사의 연간 이산화탄소 배출량은 총 <span class="my_co2" style="color: #FF2800">{{co2}}</span>이며, <span class="my_ind" style="color: #999DA0">{{ind}}</span>-<span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약<span class="my_ratio" style="color: #FF2800">{{ratio}}% {{compare}} 배출</span>하고 있습니다.</p>
+		<p>이만큼의 이산화탄소를 없애기 위해서는 약<span class="my_tree" style="color: #FF2800">{{tree}}</span>그루의 소나무를 심어야합니다.</p>
+		<p>정부는 탄소중립을 위해서 2030년까지 2017년기준 24.4%를 감축하기로 선언했습니다. 귀사는 정부시책에 따라 2030년까지 <span class="my_target" style="color: #FF2800">{{c_target}}</span>의 배출량 감축을 수행해야합니다.</p>
+
+		<h1>예측치와 감축적용시 비교</h1>
+			<div id='compare_result' style="width:60%;max-width:550px">
+			<script>
+				var data_defore = {
+				  x: {{ date | safe}},
+				  y: {{ my_before | safe}},
+				  type: 'line',
+				  line: {color: '#D6CFC7'},
+				  name: '과거+예측치'
+				};
+
+				var data_after = {
+				  x: {{ date | safe}},
+				  y: {{ my_after | safe}},
+				  type: 'line',
+				  line: {color: '#B40A30'},
+				  fill: 'tonexty',
+				  fillcolor: '#B40A30',
+				  name: '기술적용시 감축량'
+				};
+
+				var data = [data_defore, data_after];
+
+				Plotly.newPlot('compare_result', data);
+			</script>
+</div>
+<!--ATTACH END-->
+								<!-- Blog Area End -->
+							</main>
+							<footer>
         <div class="footer-wrapper">
            <!-- Footer Start-->
            <div class="footer-area footer-padding">
