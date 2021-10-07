@@ -284,6 +284,23 @@ def calculator_result(request):
 	elec = request.GET.get('user_elec');
 	co2 = round(float(request.GET.get('user_co2')), 3)
 	tree = request.GET.get('user_tree');
+	no1 = request.GET.get('no1')
+	no2 = request.GET.get('no2')
+	no3 = request.GET.get('no3')
+	no4 = request.GET.get('no4')
+	no5 = request.GET.get('no5')
+	fuel_no1 = request.GET.get('fuel_no1')
+	fuel_no2 = request.GET.get('fuel_no2')
+	fuel_no3 = request.GET.get('fuel_no3')
+	fuel_no4 = request.GET.get('fuel_no4')
+	fuel_no5 = request.GET.get('fuel_no5')
+	elec_no1 = request.GET.get('elec_no1')
+	elec_no2 = request.GET.get('elec_no2')
+	elec_no3 = request.GET.get('elec_no3')
+	elec_no4 = request.GET.get('elec_no4')
+	elec_no5 = request.GET.get('elec_no5')
+
+
 
 	ind_ko = request.GET.get('ind_name');
 	try:
@@ -330,6 +347,21 @@ def calculator_result(request):
 		'elec': elec,
 		'tree': tree,
 		'co2': co2,
+		'no1':no1,
+		'no2':no2,
+		'no3':no3,
+		'no4':no4,
+		'no5':no5,
+		'fuel_no1': fuel_no1,
+		'fuel_no2': fuel_no2,
+		'fuel_no3': fuel_no3,
+		'fuel_no4': fuel_no4,
+		'fuel_no5': fuel_no5,
+		'elec_no1': elec_no1,
+		'elec_no2': elec_no2,
+		'elec_no3': elec_no3,
+		'elec_no4': elec_no4,
+		'elec_no5': elec_no5,
 
 		'ind_ko': ind_ko,
 		'reduce_co2': reduce_co2,
@@ -353,7 +385,6 @@ def calculator_result(request):
 	}
 
 	return render(request, 'calculator_result.html', context)
-
 
 def test(request):
 	# industry = request.GET.get('industry')
