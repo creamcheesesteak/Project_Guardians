@@ -252,6 +252,21 @@ def calculator_option(request):
 			'ind_elec' : ind_mean[0],
 			'ind_co2' : ind_mean[1],
 			'ind_tree' : ind_mean[2],
+			'no1': sort_base[15],
+			'no2': sort_base[16],
+			'no3': sort_base[17],
+			'no4': sort_base[18],
+			'no5': sort_base[19],
+			'fuel_no1': sort_fuel[15],
+			'fuel_no2': sort_fuel[16],
+			'fuel_no3': sort_fuel[17],
+			'fuel_no4': sort_fuel[18],
+			'fuel_no5': sort_fuel[19],
+			'elec_no1': sort_elec[15],
+			'elec_no2': sort_elec[16],
+			'elec_no3': sort_elec[17],
+			'elec_no4': sort_elec[18],
+			'elec_no5': sort_elec[19],
 		};
 
 	except AttributeError:
