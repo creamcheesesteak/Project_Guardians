@@ -162,10 +162,10 @@ def blog_details(request):
 		eng_max = sort['ENG_CNSM'].max()
 		# eng_all = (sort['ENG_CNSM'].mean()) * (len(sort['ENG_CNSM']))
 
-		co2_loc_mean = 10+(co2_mean / co2_max) * 233
-		co2_loc = 18+(co2 / co2_max) * 233
-		eng_loc_mean = 10+(eng_mean / eng_max) * 233
-		eng_loc = 18+(eng / eng_max) * 233
+		co2_loc_mean = 25+(co2_mean / co2_max) * 233
+		co2_loc = (co2 / co2_max) * 233
+		eng_loc_mean = 25+(eng_mean / eng_max) * 233
+		eng_loc = (eng / eng_max) * 233
 
 		result = {'category': category, 'search': search, 'co2': co2, 'co2_mean': co2_mean, 'co2_min': co2_min,
 				  'co2_max': co2_max, 'eng': eng, 'eng_mean': eng_mean, 'eng_min': eng_min, 'eng_max': eng_max,
