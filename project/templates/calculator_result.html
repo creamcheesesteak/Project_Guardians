@@ -37,6 +37,7 @@
 	div#content div.pageDiv div.inputZone span { color:#ff4d4d; }
 
     table {width:95%;border-collapse: collapse;}
+    td {border :1px solid black;}
 
     .btn-size {width:300px;}
     </style>
@@ -117,8 +118,12 @@
                     <div class="inputZone">
 						<table>
 							<tbody>
+                            <tr>
+                                <td>img1</td>
+                                <td>img2</td>
+                            </tr>
 							<tr>
-								<td width="50%" style="border-bottom:dashed; border-color:#e9e9e9;"><div id='basic_bar' style="width:50%; height:320px;">
+								<td width="50%" rowspan="2" style="border-bottom:dashed; border-color:#e9e9e9;"><div id='basic_bar' style="width:100%; height:320px;">
 			                        <script>
 				var data = [
 				  {
@@ -232,9 +237,12 @@
                                 </td>
 							</tr>
                             <tr>
+                                <td>img3</td>
+                            </tr>
+                            <tr>
 								<td></td>
                                 <td style="border-bottom:dashed; border-left:dashed; border-color:#e9e9e9">
-                                    <div id='compare_result' style="width:100%; height:300px;">
+                                    <div id='compare_result' style="width:100%; height:280px;">
                                         <script>
                                             var data_defore = {
                                               x: {{ date | safe}},
