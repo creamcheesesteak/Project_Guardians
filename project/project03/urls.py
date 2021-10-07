@@ -33,6 +33,7 @@ path('blog_details', views.blog_details, name='blog_details'),
 path('calculator', views.calculator, name='calculator'),
 path('calculator_option', views.calculator_option, name='calculator_option'),
 path('calculator_result', views.calculator_result, name='calculator_result'),
+path('calculator_result2', views.calculator_result2, name='calculator_result2'),
 
 path('elements', views.elements, name='elements'),
 

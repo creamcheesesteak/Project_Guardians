@@ -367,3 +367,7 @@ def test(request):
 def elements(request):
 
 	return render(request, 'elements.html')
+
+def calculator_result2(request):
+
+	return render(request, 'calculator_result2.html')

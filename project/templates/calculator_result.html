@@ -28,16 +28,16 @@
 	<script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
     <style>
     div#content {background:url('static/assets/img/main_bg.png') no-repeat; height:1100px; background-position:center;}
-    div#content div#content div.section {min-height:900px; }
 
-    div#content div.pageDiv {width:1100px; height:750px; background:white; position:absolute; background-position:center; top:300px; left:200px; border-radius:30px;}
-    div#content div.pageDiv div.inputZone {margin-top:30px; margin-left:50px;font-weight:700px; }
+    div#content div.pageDiv {width:1100px; height:780px; background:white; position:absolute; background-position:center; top:280px; left:200px; border-radius:30px;}
+    div#content div.pageDiv div.inputZone {margin-top:10px; margin-left:50px;font-weight:700px; }
     div#content div.pageDiv div.inputZone h3 {color:black; font-weight:700; font-size:20px; text-align:center}
 
     div#content div.pageDiv div.inputZone {font-size:17px; font-weight:bold; line-height:23px; font-family:'Noto Sans Kr'; }
 	div#content div.pageDiv div.inputZone span { color:#ff4d4d; }
 
     table {width:95%;border-collapse: collapse;}
+    td {border:1px solid black;}
     </style>
 </head>
 <body>
@@ -117,165 +117,161 @@
 						<table>
 							<tbody>
 							<tr>
-								<th style="width:50%;"><h3>이산화탄소 배출현황 및 비교</h3></th>
-								<th style="border-left:dashed; border-color:#e9e9e9"><h3>{{sido}}의 평균 이산화탄소배출량과 예측치 시각화</h3></th>
+								<td width="50%"><div id='basic_bar' style="width:50%; height:320px;">
+			                        <script>
+				var data = [
+				  {
+					x: ['경쟁사', '귀사', '기술적용', '정부목표'],
+					y: {{ bar_value | safe}},
+					marker:{
+						color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
+					  },
+					type: 'bar'
+				  }
+				];
+
+				Plotly.newPlot('basic_bar', data);
+			</script></div>
+                                </td>
+                                <td><div id='timeseries' style="width:100%; height:320px;">
+                                        <script>
+                                            var raw = {
+                                              x: {{ date | safe}},
+                                              y: {{ raw | safe}},
+                                              type: 'scatter',
+                                              name: 'past',
+                                              mode: 'line',
+                                              line: {color: '#89CFEF'}
+                                            };
+
+                                            var upper = {
+                                              x: {{ date | safe}},
+                                              y: {{ upper | safe}},
+                                              fill: 'tonexty',
+                                              fillcolor: 'white',
+                                              type: 'scatter',
+                                              name: 'criteria',
+                                              mode: 'none'
+                                            };
+
+                                            var lower = {
+                                              x: {{ date | safe}},
+                                              y: {{ lower | safe}},
+                                              fill: 'tonexty',
+                                              fillcolor: '#98FB98',
+                                              color: 'white',
+                                              type: 'scatter',
+                                              name: 'predict_field',
+                                              mode: 'none'
+                                            };
+
+                                            var mean = {
+                                              x: {{ date | safe}},
+                                              y: {{ mean | safe}},
+                                              type: 'scatter',
+                                              name: 'prediction',
+                                              mode: 'line',
+                                              line: {color: '##D30000'}
+                                            };
+                                            var layout = {
+                                              title: 'CO2 Emissions',
+                                              shapes: [
+                                            {
+                                                type: 'rect',
+                                                // x-reference is assigned to the x-values
+                                                xref: 'x',
+                                                // y-reference is assigned to the plot paper [0,1]
+                                                yref: 'paper',
+                                                x0: '2018-11-01',
+                                                y0: 0,
+                                                x1: '2022-10-01',
+                                                y1: 1,
+                                                fillcolor: '#999DA0',
+                                                opacity: 0.2,
+                                                line: {
+                                                    width: 0
+                                                }
+                                            }],
+                                              xaxis: {
+                                                autorange: true,
+                                                range: {{ date | safe}},
+                                                rangeselector: {buttons: [
+                                                    {
+                                                      count: 1,
+                                                      label: '1m',
+                                                      step: 'month',
+                                                      stepmode: 'backward'
+                                                    },
+                                                    {
+                                                      count: 6,
+                                                      label: '6m',
+                                                      step: 'month',
+                                                      stepmode: 'backward'
+                                                    },
+                                                    {step: 'all'}
+                                                  ]},
+                                                rangeslider: {range: {{ date | safe}}},
+                                                type: 'date'
+                                              },
+                                              yaxis: {
+                                                autorange: true,
+                                                type: 'linear'
+                                              }
+                                            };
+                                            // var layout = {
+                                            //   title: 'CO2 Emissions'
+
+                                            // };
+                                            var data = [raw, upper, lower, mean];
+
+                                            Plotly.newPlot('timeseries', data, layout);
+                                        </script>
+                                    </div>
+                                </td>
 							</tr>
-							<tr>
-								<td>
-									<div id='basic_bar' style="height:320px;">
-									<script>
-										var data = [
-										  {
-											x: ['경쟁사', '귀사', '기술적용', '정부목표'],
-											y: {{ bar_value | safe}},
-											marker:{
-												color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
-											  },
-											type: 'bar'
-										  }
-										];
-
-										Plotly.newPlot('basic_bar', data);
-									</script>
-									</div>
-								</td>
-								<td>
-									<div id='timeseries' style="height:320px; border-left:dashed; border-color:#e9e9e9">
-									<script>
-										var raw = {
-										  x: {{ date | safe}},
-										  y: {{ raw | safe}},
-										  type: 'scatter',
-										  name: 'past',
-										  mode: 'line',
-										  line: {color: '#89CFEF'}
-										};
-
-										var upper = {
-										  x: {{ date | safe}},
-										  y: {{ upper | safe}},
-										  fill: 'tonexty',
-										  fillcolor: 'white',
-										  type: 'scatter',
-										  name: 'criteria',
-										  mode: 'none'
-										};
-
-										var lower = {
-										  x: {{ date | safe}},
-										  y: {{ lower | safe}},
-										  fill: 'tonexty',
-										  fillcolor: '#98FB98',
-										  color: 'white',
-										  type: 'scatter',
-										  name: 'predict_field',
-										  mode: 'none'
-										};
-
-										var mean = {
-										  x: {{ date | safe}},
-										  y: {{ mean | safe}},
-										  type: 'scatter',
-										  name: 'prediction',
-										  mode: 'line',
-										  line: {color: '##D30000'}
-										};
-										var layout = {
-										  title: 'CO2 Emissions',
-										  shapes: [
-										{
-											type: 'rect',
-											// x-reference is assigned to the x-values
-											xref: 'x',
-											// y-reference is assigned to the plot paper [0,1]
-											yref: 'paper',
-											x0: '2018-11-01',
-											y0: 0,
-											x1: '2022-10-01',
-											y1: 1,
-											fillcolor: '#999DA0',
-											opacity: 0.2,
-											line: {
-												width: 0
-											}
-										}],
-										  xaxis: {
-											autorange: true,
-											range: {{ date | safe}},
-											rangeselector: {buttons: [
-												{
-												  count: 1,
-												  label: '1m',
-												  step: 'month',
-												  stepmode: 'backward'
-												},
-												{
-												  count: 6,
-												  label: '6m',
-												  step: 'month',
-												  stepmode: 'backward'
-												},
-												{step: 'all'}
-											  ]},
-											rangeslider: {range: {{ date | safe}}},
-											type: 'date'
-										  },
-										  yaxis: {
-											autorange: true,
-											type: 'linear'
-										  }
-										};
-										// var layout = {
-										//   title: 'CO2 Emissions'
-
-										// };
-										var data = [raw, upper, lower, mean];
-
-										Plotly.newPlot('timeseries', data, layout);
-									</script>
-									</div>
-								</td>
-							</tr>
-							<tr>
+                            <tr>
 								<td></td>
-								<th style="border-left:dashed; border-top:dashed; border-color:#e9e9e9; padding-top:10px;"><h3>예측치와 감축적용시 비교</h3></th>
+                                <td><div id='compare_result' style="width:100%; height:300px;">
+                                        <script>
+                                            var data_defore = {
+                                              x: {{ date | safe}},
+                                              y: {{ my_before | safe}},
+                                              type: 'line',
+                                              line: {color: '#D6CFC7'},
+                                              name: '과거+예측치'
+                                            };
+
+                                            var data_after = {
+                                              x: {{ date | safe}},
+                                              y: {{ my_after | safe}},
+                                              type: 'line',
+                                              line: {color: '#B40A30'},
+                                              fill: 'tonexty',
+                                              fillcolor: '#B40A30',
+                                              name: '기술적용시 감축량'
+                                            };
+
+                                            var data = [data_defore, data_after];
+
+                                            Plotly.newPlot('compare_result', data);
+                                        </script>
+                                </div>
+                                </td>
 							</tr>
-							<tr>
-								<td rowspan="3" style="padding-bottom:70px; padding-right:20px;">
-									<img src="static/assets/img/orange.png"> 귀사의 연간 이산화탄소 배출량은 총 <span class="my_co2">{{co2}}</span>이며,<br>
-                                    &nbsp;&nbsp;<span class="my_ind" style="color: #999DA0">{{ind}}</span>-<span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약<br>
-									&nbsp;&nbsp;<span class="my_ratio">{{ratio}}% {{compare}} 배출</span>하고 있습니다.<br><br>
-									<img src="static/assets/img/orange.png"> 이만큼의 이산화탄소를 없애기 위해서는 약<span class="my_tree">{{tree}}</span>그루의 <br>&nbsp;&nbsp;소나무를 심어야합니다.<br><br>
-									<img src="static/assets/img/orange.png"> 정부는 탄소중립을 위해서 2030년까지 2017년기준 <br>&nbsp;&nbsp;24.4%를 감축하기로 선언했습니다. 귀사는 정부시책에 따라 <br>&nbsp;&nbsp;2030년까지
-									<span class="my_target">{{c_target}}</span>의 배출량 감축을 수행해야합니다.
-								</td>
-								<td rowspan="3">
-									<div id='compare_result' style="width:100%; height:310px; border-left:dashed; border-color:#e9e9e9">
-										<script>
-											var data_defore = {
-											  x: {{ date | safe}},
-											  y: {{ my_before | safe}},
-											  type: 'line',
-											  line: {color: '#D6CFC7'},
-											  name: '과거+예측치'
-											};
+                            <tr>
+                                <td><div class="button-group-area">
+								<br><input type="submit" value="세부기술 알아보기" class="btn btn-size" onclick="location='/calculator_result2'">
+							</div></td>
+                                <td>
+                                    <img src="static/assets/img/orange.png"> 귀사의 연간 이산화탄소 배출량은 총
+                                    <span class="my_co2">{{co2}}</span>이며, <span class="my_ind" style="color: #999DA0">{{ind}}</span>-
+                                    <span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약
+                                    <span class="my_ratio">{{ratio}}% {{compare}} 배출</span>하고 있습니다.
+		                            탄소중립을 위해 <span class="my_tree">{{tree}}</span>그루의 소나무를 심어야합니다.<br><br>
 
-											var data_after = {
-											  x: {{ date | safe}},
-											  y: {{ my_after | safe}},
-											  type: 'line',
-											  line: {color: '#B40A30'},
-											  fill: 'tonexty',
-											  fillcolor: '#B40A30',
-											  name: '기술적용시 감축량'
-											};
-
-											var data = [data_defore, data_after];
-
-											Plotly.newPlot('compare_result', data);
-										</script>
-									</div>
-								</td>
+                                    <img src="static/assets/img/orange.png"> 정부시책은 30년도까지 17년기준 24.4%를 감축하는 것입니다.<br>
+                                    &ensp;귀사는 30년까지 <span class="my_target">{{c_target}}</span>의 탄소를 감축해야합니다
+                                </td>
 							</tr>
 							</tbody>
 						</table>
