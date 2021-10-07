@@ -186,6 +186,7 @@ def calculator_option(request):
 		sido = request.GET.get('sido');
 		ind = request.GET.get('ind');
 		user_select_energy = request.GET.get('user_select_energy')
+		saving_technology = request.GET.get('saving_technology')
 
 		data_sorting = Co2().ind_name(ind);
 		ind_mean = Co2().graph(ind,sido)
@@ -249,6 +250,7 @@ def calculator_option(request):
 			'user_tree' : user_tree,
 			'result_sido': sido,
 			'user_select_energy': user_select_energy,
+			'saving_technology': saving_technology,
 			'ind_elec' : ind_mean[0],
 			'ind_co2' : ind_mean[1],
 			'ind_tree' : ind_mean[2],
