@@ -266,22 +266,25 @@
 				Plotly.newPlot('basic_bar', data);
 			</script></div></td>
                                 <td style="border-left:dashed; border-color:#e9e9e9">
-                                    <span class="my_ind_tech" style="color: #999DA0">{{ind}}</span>-<span class="my__energy_tech" style="color: #999DA0">{{main_energy}}</span>주력-
-                                    <span class="my__saving_tech" style="color: #999DA0">{{saving_target}}</span>우선 에서 가장 적합한 기술<br><br><br><br>
+                                    <span class="my_ind_ko_tech" style="color: #999DA0">{{ind_ko}}</span>-<span class="my__energy_tech" style="color: #999DA0">{{main_energy}}</span>주력-
+                                    <span class="my__saving_tech" style="color: #999DA0">{{saving_target}}</span>우선 에서 가장 적합한 기술<br><br>
+
+                                    ■대상설비: <span class="my_t1">{{t1}}</span>-개선구분: <span class="my_t2">{{t2}}</span>-세부행동: <span class="my_t3">{{t3}}</span>-
+                                    회수기간: <span class="my_t4">{{t4}}</span>년-투자액: <span class="my_t5">{{t5}}</span>백만원-절감액: <span class="my_t6">{{t6}}</span>백만원
+                                    <br><br>
 
                                     앞서 선택한 감축기술의 일련번호는 탄소기준<span class="my_c_tech">{{c_tech}}</span>,
                                     연료기준<span class="my_f_tech">{{f_tech}}</span>, 전력기준<span class="my_e_tech">{{e_tech}}</span>입니다.
                                     아래 버튼을 눌러서 기술의 구체적 내용을 확인하세요.
-
                                 </td>
 							</tr>
                             <tr>
                                 <td style="border-top:dashed; border-color:#e9e9e9; padding-top:5px;">
                                     <img src="static/assets/img/orange.png"> 귀사의 연간 이산화탄소 배출량은 총
-                                    <span class="my_co2">{{co2}}</span>이며, <span class="my_ind" style="color: #999DA0">{{ind}}</span>-
+                                    <span class="my_co2">{{co2}}</span>이며, <span class="my_ind_ko" style="color: #999DA0">{{ind_ko}}</span>-
                                     <span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약
                                     <span class="my_ratio">{{ratio}}% {{compare}} 배출</span>하고 있습니다.
-		                            탄소중립을 위해 <span class="my_tree">{{tree}}</span>그루의 소나무를 심어야합니다.<br><br>
+		                            탄소중립을 위해 <span class="my_tree">{{tree}}</span>그루의 소나무를 심어야합니다.<br>
 
                                     <img src="static/assets/img/orange.png"> 정부시책은 30년도까지 17년기준 24.4%를 감축하는 것입니다.<br>
                                     &ensp;귀사는 30년까지 <span class="my_target">{{c_target}}</span>의 탄소를 감축해야합니다.

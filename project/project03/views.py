@@ -351,6 +351,30 @@ def calculator_result(request):
 
 	my_after = [element * 0.87 for element in my_before]  # example
 
+	try:
+		con = sqlite3.connect('./sorting.db')
+		dff = pd.read_sql_query('select * from top_8_final', con)
+		target_column = {'탄소감축': 'deco2', '연료절감': '에너지 절감량(연료)', '전력절감': '에너지 절감량(전력)'}
+		dff = dff[(dff.sort.str.contains(ind_ko)) & (dff['에너지 절감 종류'].str.contains(main_energy))]
+		dff = dff.sort_values(by=target_column[saving_target], ascending=False)
+		dff = dff.iloc[0]
+		t = dff.tolist()
+		t1 = t[2]
+		t2 = t[3]
+		t3 = t[4]
+		t4 = t[5]
+		t5 = t[9]
+		t6 = t[7]
+	# target_tech = dff.loc[0].tolist()
+	except:
+		t = ['', '', '', '', '', '', '', '', '', '']
+		t1 = t[2]
+		t2 = t[3]
+		t3 = t[4]
+		t4 = t[5]
+		t5 = t[9]
+		t6 = t[7]
+
 	context = {
 		'ind': ind,
 		'sido': sido,
@@ -384,6 +408,14 @@ def calculator_result(request):
 
 		'main_energy':main_energy,
 		'saving_target':saving_target,
+
+		# 'target_tech':target_tech,
+		't1':t1,
+		't2':t2,
+		't3':t3,
+		't4':t4,
+		't5':t5,
+		't6':t6,
 	}
 
 	return render(request, 'calculator_result.html', context)
