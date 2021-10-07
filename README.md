@@ -18,15 +18,9 @@
 ![화면 캡처 2021-09-10 232134](https://user-images.githubusercontent.com/86331136/132868816-56f2a509-7a63-4c04-be87-307b513d2db2.png)
 
 ### ◾ 개발환경 및 도구
--언어 : Python, SQL  
--통합 개발 환경 : Pycharm, Jupyter Notebook  
--분석 라이브러리 : Pandas, Numpy, Sikit-Learn, ARIMA  
--시각화 : Tableau, Matplotlib  
--웹 서버 : Django  
--웹 클라이언트 : HTML5, JS, Ajax, CSS  
--시스템 운영 환경 : Python Anywhere  
--데이터베이스 : MariaDB  
--협업 도구 : Github, Zoom, Google Docs  
+|언어|통합 개발 환경|분석 라이브러리|시각화| 웹 프레임워크|웹|배포|데이터베이스|협업 도구|
+|------|------|------|------|------|------|------|------|------|
+|Python, SQL|Pycharm, Jupyter Notebook, google colab| Pandas, Numpy, Sckit-learn, ARIMA|Tableau, Plotly, highcharts|Django|HTML5, JS, AJAX, CSS|goorm.io|sqlite|Github, Zoom, Google Docs|  
 
 ### ◾ 일정
 - **프로젝트 수립과 데이터 수집**  
