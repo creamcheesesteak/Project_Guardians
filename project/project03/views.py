@@ -321,7 +321,7 @@ def calculator_result(request):
 	# def
 	in_pl = ind + sido
 	# db_test = sqlite3.connect('./timeseries.db')
-	db_test = sqlite3.connect('../fucking_last_final.db')
+	db_test = sqlite3.connect('./fucking_last_final.db')
 	c = db_test.cursor()
 	df = pd.read_sql("SELECT * FROM " + in_pl + "", db_test, index_col=None)
 	df = df.replace(np.nan, 'null')
@@ -426,7 +426,7 @@ def test(request):
 	# place = request.GET.gt('place')
 	# in_pl = str(industry) + str(place)
 	in_pl = 'transportation대전광역시'
-	db_test = sqlite3.connect('../fucking_last_final.db')
+	db_test = sqlite3.connect('./fucking_last_final.db')
 	# db_test = sqlite3.connect('./timeseries.db')
 	c = db_test.cursor()
 	df = pd.read_sql("SELECT * FROM "+in_pl+"", db_test, index_col=None)
