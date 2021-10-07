@@ -143,7 +143,9 @@ def blog_details(request):
 	if category == None or search == None:
 		return render(request, 'blog_details.html')
 	else:
-		df = pd.read_csv('../project/ML/ML_c/mean_ghs.csv', encoding='cp949')
+		con = sqlite3.connect('./sorting.db')
+		df = pd.read_sql_query('select * from mean_ghs', con)
+
 		cat = {'석유화학': 'chemistry', '음식료품 · 제조업': 'manufacture', '광업': 'mining', '조선': 'ship', '건물': 'building',
 			   '교통': 'transportation', '반도체.디스플레이.전기전자': 'electric',
 			   '발전 · 에너지': 'energy', '유리 · 요업': 'glass', '제지': 'paper'}
