@@ -32,8 +32,8 @@
     div#content div.pageDiv {width:1100px; height:600px; background:white; position:absolute; background-position:center; top:350px; left:200px; border-radius:30px;}
     div#content div.pageDiv div.inputZone {margin-top:55px; margin-left:60px; font-weight:700px; }
 
-    table {width: 95%;border: 1px solid #444444;border-collapse: collapse;}
-    th, td {border: 1px solid #444444;padding: 10px;}
+    table {width: 95%;border-collapse: collapse;}
+    th, td {border: 1px solid gray; padding: 10px;}
     .btn-size {width:95%}
     </style>
 </head>
@@ -203,7 +203,8 @@
                                 </tr>
                                 <tr>
                                     <td height="55px" bgcolor="#DDECCA" style="border:hidden; background-image:url(./static/assets/img/elements/index_electric.png); background-size:100%; background-repeat:no-repeat; background-position:center;">&emsp;</td>
-                                    <td colspan="2"><input type='number' name='elec' id='elec' onkeyup='call2()'> kWh/년</td>
+                                    <td><input type='number' name='elec' id='elec' onkeyup='call2()'> kWh/년</td>
+                                    <td>정수형태의 숫자 입력</td>
                                 </tr>
                                 <tr>
                                     <td height="55px" bgcolor="#DDECCA" style="border:hidden; background-image:url(./static/assets/img/elements/index_co2.png); background-size:100%; background-repeat:no-repeat; background-position:center;">&emsp;</td>
