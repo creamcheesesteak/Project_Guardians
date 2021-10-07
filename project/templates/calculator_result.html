@@ -122,23 +122,7 @@
                                 <td>img2</td>
                             </tr>
 							<tr>
-								<td width="50%" rowspan="2" style="border-bottom:dashed; border-color:#e9e9e9;"><div id='basic_bar' style="width:100%; height:320px;">
-			                        <script>
-				var data = [
-				  {
-					x: ['경쟁사', '귀사', '기술적용', '정부목표'],
-					y: {{ bar_value | safe}},
-					marker:{
-						color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
-					  },
-					type: 'bar'
-				  }
-				];
-
-				Plotly.newPlot('basic_bar', data);
-			</script></div>
-                                </td>
-                                <td style="border-bottom:dashed; border-left:dashed; border-color:#e9e9e9">
+								<td width="50%"style="border-bottom:dashed; border-color:#e9e9e9;">
                                     <div id='timeseries' style="width:100%; height:320px;">
                                         <script>
                                             var raw = {
@@ -234,13 +218,7 @@
                                         </script>
                                     </div>
                                 </td>
-							</tr>
-                            <tr>
-                                <td>img3</td>
-                            </tr>
-                            <tr>
-								<td></td>
-                                <td style="border-bottom:dashed; border-left:dashed; border-color:#e9e9e9">
+                                <td rowspan="2" style="border-bottom:dashed; border-left:dashed; border-color:#e9e9e9">
                                     <div id='compare_result' style="width:100%; height:280px;">
                                         <script>
                                             var data_defore = {
@@ -269,10 +247,30 @@
                                 </td>
 							</tr>
                             <tr>
-                                <td style="text-align:center;"><div class="button-group-area">
-								<input type="submit" value="세부기술 알아보기" class="btn btn-size" onclick="location='/calculator_result2'">
-							</div></td>
-                                <td style="border-left:dashed; border-color:#e9e9e9; padding-left:5px; padding-top:5px;">
+                                <td>img3</td>
+                            </tr>
+                            <tr>
+								<td><div id='basic_bar' style="width:100%; height:300px;">
+			                        <script>
+				var data = [
+				  {
+					x: ['경쟁사', '귀사', '기술적용', '정부목표'],
+					y: {{ bar_value | safe}},
+					marker:{
+						color: ['#D6CFC7', '#B40A30', '#EEDC82', '#FEDC56']
+					  },
+					type: 'bar'
+				  }
+				];
+
+				Plotly.newPlot('basic_bar', data);
+			</script></div></td>
+                                <td style="border-bottom:dashed; border-left:dashed; border-color:#e9e9e9">
+
+                                </td>
+							</tr>
+                            <tr>
+                                <td >
                                     <img src="static/assets/img/orange.png"> 귀사의 연간 이산화탄소 배출량은 총
                                     <span class="my_co2">{{co2}}</span>이며, <span class="my_ind" style="color: #999DA0">{{ind}}</span>-
                                     <span class="my_sido" style="color: #999DA0">{{sido}}</span>의 동일지역 경쟁사보다 약
@@ -281,6 +279,10 @@
 
                                     <img src="static/assets/img/orange.png"> 정부시책은 30년도까지 17년기준 24.4%를 감축하는 것입니다.<br>
                                     &ensp;귀사는 30년까지 <span class="my_target">{{c_target}}</span>의 탄소를 감축해야합니다.
+							    </td>
+                                <td style="text-align:center; border-left:dashed; border-color:#e9e9e9">
+                                    <div class="button-group-area">
+								<input type="submit" value="세부기술 알아보기" class="btn btn-size" onclick="location='/calculator_result2'">
                                 </td>
 							</tr>
 							</tbody>
