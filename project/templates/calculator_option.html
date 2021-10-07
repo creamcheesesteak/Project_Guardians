@@ -29,7 +29,7 @@
 
     div#content div.pageDiv {width:1100px; height:600px; background:white; position:absolute; background-position:center; top:320px; left:200px; border-radius:30px;}
     div#content div.pageDiv div.inputZone {margin-top:50px; margin-left:50px; margin-right:50px; font-weight:700px; }
-    div#content div.pageDiv div.inputZone h3 { color:black; font-weight:700; width:200px; float:left; margin-top:10px; font-size:20px;}
+    div#content div.pageDiv div.inputZone h3 { color:black; font-weight:700; float:left; margin-top:10px; font-size:20px;}
 
 	div.left {width: 50%;float: left;box-sizing: border-box;}
 	div.right {width: 50%;float: right;box-sizing: border-box;}
@@ -110,7 +110,7 @@
 						<div class="left">
 						<form method="get" action="form-action.html">
 						  	<h3 id="sort_name">{{sort}}의 추천 감축기술</h3>
-							<div class="container" id="tabs_container">
+							<div class="container" id="tabs_container" style="padding-top:50px;">
 								  <ul class="tabs">
 									<li class="tab-link current" data-tab="tab-1">탄소 감축우선</li>
 									<li class="tab-link" data-tab="tab-2">연료 절감우선</li>
@@ -139,8 +139,8 @@
 								 </div>
 							</div>
 
-							<td><input type='number' name='co2' id='co2' style="width:150px" readonly> tCO₂/yr</td>
-							<td><input type='number' name='money' id='money' style="width:150px" readonly> 백만원/yr</td>
+							<br>&emsp;<input type='number' name='co2' id='co2' style="width:150px" readonly> tCO₂/yr
+							&emsp;<input type='number' name='money' id='money' style="width:150px" readonly> 백만원/yr
 
 								<!-- 데이터 보내기용 hidden  -->
 							<input type='hidden' name="user_elec" id="user_elec" value="{{user_elec}}">
