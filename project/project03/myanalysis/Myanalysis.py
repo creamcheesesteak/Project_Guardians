@@ -78,8 +78,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist();
             result_data2 = df3['act'].tolist();
             result_data3 = df3['money'].tolist();
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3;
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 건설업
         elif ind == 'building':
@@ -111,8 +112,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 도매 및 소매업
         elif ind == 'retail':
@@ -143,8 +145,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 광업
         elif ind == 'mining':
@@ -175,8 +178,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 운수업
         elif ind == 'transportation':
@@ -207,8 +211,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 폐기물 및 재생사업
         elif ind == 'recycle':
@@ -239,8 +244,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 발전에너지, 수도사업
         elif ind == 'energy':
@@ -271,8 +277,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 농림어업
         elif ind == 'primary':
@@ -303,8 +310,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
 
         return result
@@ -312,12 +320,15 @@ class Co2:
     # 감축량 이하값 기준으로 sort (에너지 절감량(연료) 기준)#
     ########################################################
 
-    def sol1_alt_fuel(self,ind,user_co2):
+    def sol1_alt_fuel(self,ind,user_co2,sort_base):
         # django 돌릴때  경로
         con = sqlite3.connect('./sorting.db')
         # 테스트로 돌릴때  경로
         # con = sqlite3.connect('../../sorting.db')
         df = pd.read_sql_query('select * from top_8_final', con)
+        for i in range(15,20):
+            df_co2 = df[df['no'] == sort_base[i]].index
+            df = df.drop(df_co2)
 
         user_co2 = float(user_co2)
 
@@ -351,8 +362,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 건설업
         elif ind == 'building':
@@ -384,8 +396,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 도매 및 소매업
         elif ind == 'retail':
@@ -417,8 +430,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 광업
         elif ind == 'mining':
@@ -450,8 +464,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 운수업
         elif ind == 'transportation':
@@ -483,8 +498,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 폐기물 및 재생사업
         elif ind == 'recycle':
@@ -516,8 +532,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 발전에너지, 수도사업
         elif ind == 'energy':
@@ -549,8 +566,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 농림어업
         elif ind == 'primary':
@@ -582,8 +600,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
 
         return result
@@ -592,12 +611,15 @@ class Co2:
     # 감축량 이하값 기준으로 sort (에너지 절감량(전력) 기준)#
    ########################################################
 
-    def sol1_alt_elec(self, ind, user_co2):
+    def sol1_alt_elec(self, ind, user_co2, sort_base):
         # django 돌릴때  경로
         con = sqlite3.connect('./sorting.db')
         # 테스트로 돌릴때  경로
         # con = sqlite3.connect('../../sorting.db')
         df = pd.read_sql_query('select * from top_8_final', con)
+        for i in range(15,20):
+            df_co2 = df[df['no'] == sort_base[i]].index
+            df = df.drop(df_co2)
 
         user_co2 = float(user_co2)
 
@@ -630,8 +652,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 건설업
         elif ind == 'building':
@@ -662,8 +685,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 도매 및 소매업
         elif ind == 'retail':
@@ -694,8 +718,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 광업
         elif ind == 'mining':
@@ -726,8 +751,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 운수업
         elif ind == 'transportation':
@@ -758,8 +784,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 폐기물 및 재생사업
         elif ind == 'recycle':
@@ -790,8 +817,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 발전에너지, 수도사업
         elif ind == 'energy':
@@ -822,8 +850,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         # 농림어업
         elif ind == 'primary':
@@ -854,8 +883,9 @@ class Co2:
             result_data1 = df3['deco2'].tolist()
             result_data2 = df3['act'].tolist()
             result_data3 = df3['money'].tolist()
+            result_data4 = df3['no'].tolist();
 
-            result = result_data1 + result_data2 + result_data3
+            result = result_data1 + result_data2 + result_data3 + result_data4;
 
         return result
 

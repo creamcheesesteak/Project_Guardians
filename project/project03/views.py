@@ -191,8 +191,8 @@ def calculator_option(request):
 		ind_mean = Co2().graph(ind,sido)
 
 		sort_base = Co2().sol1_alt(ind,user_co2)
-		sort_fuel = Co2().sol1_alt_fuel(ind,user_co2)
-		sort_elec = Co2().sol1_alt_elec(ind,user_co2)
+		sort_fuel = Co2().sol1_alt_fuel(ind,user_co2,sort_base)
+		sort_elec = Co2().sol1_alt_elec(ind,user_co2,sort_base)
 
 		context = {
 			'sol1': sort_base[5],
