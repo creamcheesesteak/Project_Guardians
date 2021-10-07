@@ -279,6 +279,32 @@ def calculator_option(request):
 	return render(request, 'calculator_option.html', context)
 
 def calculator_result(request):
+	main_energy = request.GET.get('user_select_energy');
+	saving_target = request.GET.get('saving_technology');
+	no1 = request.GET.get('no1');
+	no2 = request.GET.get('no2');
+	no3 = request.GET.get('no3');
+	no4 = request.GET.get('no4');
+	no5 = request.GET.get('no5');
+	fuel_no1 = request.GET.get('fuel_no1');
+	fuel_no2 = request.GET.get('fuel_no2');
+	fuel_no3 = request.GET.get('fuel_no3');
+	fuel_no4 = request.GET.get('fuel_no4');
+	fuel_no5 = request.GET.get('fuel_no5');
+	elec_no1 = request.GET.get('elec_no1');
+	elec_no2 = request.GET.get('elec_no2');
+	elec_no3 = request.GET.get('elec_no3');
+	elec_no4 = request.GET.get('elec_no4');
+	elec_no5 = request.GET.get('elec_no5');
+
+	c_tech = [no1, no2, no3, no4, no5]
+	f_tech = [fuel_no1, fuel_no2, fuel_no3, fuel_no4, fuel_no5]
+	e_tech = [elec_no1, elec_no2, elec_no3, elec_no4, elec_no5]
+
+	c_tech = list(filter(None, c_tech))
+	f_tech = list(filter(None, f_tech))
+	e_tech = list(filter(None, e_tech))
+
 	ind = request.GET.get('ind');
 	sido = request.GET.get('user_sido');
 	elec = request.GET.get('user_elec');
@@ -294,7 +320,8 @@ def calculator_result(request):
 
 	# def
 	in_pl = ind + sido
-	db_test = sqlite3.connect('./timeseries.db')
+	# db_test = sqlite3.connect('./timeseries.db')
+	db_test = sqlite3.connect('../fucking_last_final.db')
 	c = db_test.cursor()
 	df = pd.read_sql("SELECT * FROM " + in_pl + "", db_test, index_col=None)
 	df = df.replace(np.nan, 'null')
@@ -350,6 +377,13 @@ def calculator_result(request):
 
 		'my_before': my_before,
 		'my_after': my_after,
+
+		'c_tech':c_tech,
+	    'f_tech':f_tech,
+		'e_tech':e_tech,
+
+		'main_energy':main_energy,
+		'saving_target':saving_target,
 	}
 
 	return render(request, 'calculator_result.html', context)
@@ -359,8 +393,9 @@ def test(request):
 	# industry = request.GET.get('industry')
 	# place = request.GET.gt('place')
 	# in_pl = str(industry) + str(place)
-	in_pl = 'building강원도'
-	db_test = sqlite3.connect('./timeseries.db')
+	in_pl = 'transportation대전광역시'
+	db_test = sqlite3.connect('../fucking_last_final.db')
+	# db_test = sqlite3.connect('./timeseries.db')
 	c = db_test.cursor()
 	df = pd.read_sql("SELECT * FROM "+in_pl+"", db_test, index_col=None)
 	# df = pd.read_excel('./ML/ML_i/test.xls')
@@ -373,6 +408,7 @@ def test(request):
 	mean = df['mean'].values.tolist()
 
 	context = {
+		'name':in_pl,
 		'date':date,
 		'raw':raw,
 		'lower':lower,
