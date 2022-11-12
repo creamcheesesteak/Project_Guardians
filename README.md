@@ -44,7 +44,7 @@ https://youtu.be/5QxsLW_1Uqw
 
 | 언어        | 통합 개발 환경            | 시각화                                            | 분석 라이브러리                   | 웹 구현 | 웹 클라이언트        |
 | ----------- | ------------------------- | ------------------------------------------------- | --------------------------------- | ------- | -------------------- |
-| Python, SQL | Pycharm, Jupyter Notebook | Tableau, Matplotlib, Plotly, Flourish, High Chart | Pandas, Numpy, Sikit-Learn, ARIMA | Django  | HTML5, JS, Ajax, CSS |
+| Python 3.6.4, SQL | Pycharm, Jupyter Notebook | Tableau, Matplotlib, Plotly, Flourish, High Chart | Pandas, Numpy, Sikit-Learn, ARIMA | Django  | HTML5, JS, Ajax, CSS |
 
 | 시스템 운영 환경 | 데이터베이스 | 협업 도구                            |
 | ---------------- | ------------ | ------------------------------------ |
